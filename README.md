@@ -1,0 +1,4 @@
+ARGiE
+=====
+
+(Work In Progress!) An alternate reality game app for android that allows users to create and play alternate reality games. Traditional alternate reality games are managed by human placed clues, or people, throughout an environment and can be time consuming. This app aims to alleviate some of these issues. This app is a based off of a previous application (RadVenture) from myself, Mikhail Jacob, and Jeff Bernard. Initially, this was to be a fork of that application, but after major refactoring, it became clear that starting over would be less work moving forward.  The goal of this application is to make an easy to understand, and use, game creator and player for alternate reality games.
