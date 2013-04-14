@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">ARGiE</string>
+    
+    <!-- title screen -->
+    <string name="title_screen_title_textbox">Alternate Reality Game Engine for Android</string>
+    <string name="title_screen_play_button">Play Game</string>
+    <string name="title_screen_create_button">Create Game</string>
+    <string name="title_screen_setttings_button">Settings</string>
+    <string name="title_screen_about_button">About</string>
+    
+    <!-- create game screen -->
+    <string name="create_game_screen_save_button">Save</string>
+    <string name="create_game_screen_edit_button">Edit</string>
+    <string name="create_game_screen_clear_button">Clear</string>
+    <string name="create_game_screen_add_quest_button">Add Quest</string>
+    <string name="create_game_screen_delete_quest_button">Delete Quest</string>
+    <string name="create_game_screen_move_quest_button">Move Quest</string>
+    
+    <!-- about screen -->
+    <string name="about_screen_credits_textbox">ARGiE by Brandon Headrick\n\nBased on RadVenture by Brandon Headrick, Mikhail Jacob, and Jeff Bernard\n</string>
+    <string name="menu_legalnotices">Legal Notices</string>
+    
+    
+    
+	
+    
+
+</resources>
