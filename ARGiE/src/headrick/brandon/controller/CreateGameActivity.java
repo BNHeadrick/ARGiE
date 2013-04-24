@@ -1,4 +1,4 @@
-package headrick.brandon.activities;
+package headrick.brandon.controller;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -21,6 +22,11 @@ import headrick.brandon.R;
 import android.support.v4.app.FragmentActivity;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -32,7 +38,7 @@ import headrick.brandon.gamedata.GameState;
 //public class CreateGameActivity extends Activity {
 public class CreateGameActivity extends FragmentActivity 
 implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener {
-	
+	private char tempLabel = 'A'; //temporariry just for debugging; remove later.
 	private GoogleMap mMap;
 	private ArrayList<LatLng> tempArrList = new ArrayList<LatLng>();
 	
@@ -88,8 +94,35 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener {
 	@Override
 	public void onMapLongClick(LatLng point) {
 		// TODO Auto-generated method stub
-		System.out.println("lat long is: " + point);
-        mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude)).title("Quest"));
+		//System.out.println("lat long is: " + point);
+		
+		mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude)).title("Quest"));
+		
+		Bitmap.Config conf = Bitmap.Config.ARGB_8888; 
+		Bitmap bmp = Bitmap.createBitmap(200, 50, conf); 
+		Canvas canvas = new Canvas(bmp);
+		
+		Paint paint = new Paint();
+		paint.setColor(Color.BLACK);
+		paint.setStyle(Style.FILL);
+		paint.setTextSize(55);
+		
+		//below has debugging code!**/
+		canvas.drawText(String.valueOf(tempLabel), 45, 40, paint); // paint defines the text color, stroke width, size
+		tempLabel++;
+		/**/
+		
+		
+		mMap.addMarker(new MarkerOptions()
+			.position(new LatLng(point.latitude, point.longitude))
+			.title("Quest")
+		    //.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2))
+		    .icon(BitmapDescriptorFactory.fromBitmap(bmp))
+		    .anchor(0.5f, 1)
+		    .visible(true)
+		    );
+		
+        
         
         
         if(GameState.getInstance().getRoot()!=null){

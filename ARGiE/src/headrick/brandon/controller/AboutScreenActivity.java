@@ -1,4 +1,4 @@
-package headrick.brandon.activities;
+package headrick.brandon.controller;
 
 import headrick.brandon.R;
 import android.app.Activity;

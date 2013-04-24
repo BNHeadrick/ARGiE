@@ -2,7 +2,7 @@ package headrick.brandon.gamedata;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import headrick.brandon.data_structures.QuestNode;
+import headrick.brandon.model.QuestNode;
 
 /*
  * Singleton class that holds the state of the game.  
@@ -13,8 +13,8 @@ public class GameState {
 	private static GameState instance = null;
 	private QuestNode root, tail;
 	
-	protected GameState(){
-		//just here to refrain the class from instantiation
+	private GameState(){
+		//restrict instantiation
 	}
 	
 	public static GameState getInstance(){
@@ -24,9 +24,11 @@ public class GameState {
 		return instance;
 	}
 	
+	//it simply adds a quest to the end of the quest linked list.
 	public void addQuest(String title, LatLng point, String script, String answer){
 		if(root == null){
 			root = new QuestNode(title, point, script, answer);
+			
 			tail = root;
 		}
 		else{

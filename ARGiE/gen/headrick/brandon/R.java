@@ -136,36 +136,37 @@ containing a value of this type.
     }
     public static final class id {
         public static final int aboutCredits=0x7f040005;
-        public static final int bAbout=0x7f04001e;
+        public static final int bAbout=0x7f04001f;
         public static final int bAddQuest=0x7f040012;
         public static final int bCheckMessages=0x7f04000d;
         public static final int bClearGame=0x7f040011;
         public static final int bConversation=0x7f040007;
-        public static final int bCreateGame=0x7f04001c;
+        public static final int bCreateGame=0x7f04001d;
         public static final int bDeleteQuest=0x7f040013;
         public static final int bEditGame=0x7f040010;
         public static final int bMap=0x7f040006;
         public static final int bMiniGames=0x7f040008;
         public static final int bMoveQuest=0x7f040014;
-        public static final int bPlayGame=0x7f04001b;
+        public static final int bPlayGame=0x7f04001c;
         public static final int bSaveGame=0x7f04000f;
         public static final int bSendMessage=0x7f04000c;
-        public static final int bSettings=0x7f04001d;
+        public static final int bSettings=0x7f04001e;
         public static final int etMessageToSend=0x7f04000b;
         public static final int hybrid=0x7f040004;
+        public static final int listview=0x7f040015;
         public static final int llTexts=0x7f04000a;
         public static final int map=0x7f04000e;
         public static final int none=0x7f040000;
         public static final int normal=0x7f040001;
         public static final int satellite=0x7f040002;
-        public static final int settingsCheating=0x7f040018;
-        public static final int settingsChooseXML=0x7f04001a;
-        public static final int settingsQuestXML=0x7f040019;
-        public static final int settingsTimeLimit=0x7f040017;
+        public static final int settingsCheating=0x7f040019;
+        public static final int settingsChooseXML=0x7f04001b;
+        public static final int settingsQuestXML=0x7f04001a;
+        public static final int settingsTimeLimit=0x7f040018;
         public static final int terrain=0x7f040003;
         public static final int topMenu=0x7f040009;
-        public static final int tvTimeLimit=0x7f040016;
-        public static final int tvTitle=0x7f040015;
+        public static final int tvTimeLimit=0x7f040017;
+        public static final int tvTitle=0x7f040016;
     }
     public static final class layout {
         public static final int about_screen=0x7f030000;
@@ -174,10 +175,11 @@ containing a value of this type.
         public static final int create_game_screen=0x7f030003;
         public static final int create_quest_screen=0x7f030004;
         public static final int linear_test=0x7f030005;
-        public static final int radiation_map_screen=0x7f030006;
-        public static final int settings_screen=0x7f030007;
-        public static final int splash_screen=0x7f030008;
-        public static final int title_screen=0x7f030009;
+        public static final int quest_chooser_screen=0x7f030006;
+        public static final int radiation_map_screen=0x7f030007;
+        public static final int settings_screen=0x7f030008;
+        public static final int splash_screen=0x7f030009;
+        public static final int title_screen=0x7f03000a;
     }
     public static final class string {
         /**  about screen 

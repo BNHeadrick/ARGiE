@@ -1,4 +1,4 @@
-package headrick.brandon.data_structures;
+package headrick.brandon.model;
 
 import com.google.android.gms.maps.model.LatLng;
 
