@@ -7,6 +7,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    
     <fragment
 	 android:id="@+id/map"
 	 android:layout_width="match_parent"
@@ -15,7 +16,7 @@
     
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1.0"
         android:gravity="center" 
@@ -53,7 +54,7 @@
 	
 	<LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1.0"
         android:gravity="center" 

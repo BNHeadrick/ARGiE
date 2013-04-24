@@ -51,7 +51,7 @@
 		
 		<activity android:name=".activities.ListMenu" android:label="Choose Quest XML" />
 		
-		<activity android:name=".activities.CreateGameActivity" android:label="Create Your New Game" android:launchMode="singleTask">
+		<activity android:name="headrick.brandon.activities.CreateGameActivity" android:label="Create Your New Game" android:launchMode="singleTask">
 		</activity>
         
 		<meta-data
