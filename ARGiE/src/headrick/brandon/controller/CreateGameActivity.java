@@ -103,7 +103,7 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener {
 		Canvas canvas = new Canvas(bmp);
 		
 		Paint paint = new Paint();
-		paint.setColor(Color.BLACK);
+		paint.setColor(Color.RED);
 		paint.setStyle(Style.FILL);
 		paint.setTextSize(55);
 		

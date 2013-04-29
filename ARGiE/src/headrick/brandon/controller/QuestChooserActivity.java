@@ -32,7 +32,7 @@ public class QuestChooserActivity extends Activity
 	        "Android", "iPhone", "WindowsMobile" };
 	    */
 	    
-	    String[] values = new String[]{"default"};
+	    String[] values = new String[]{"Waypoint"};
 
 	    final ArrayList<String> list = new ArrayList<String>();
 	    for (int i = 0; i < values.length; ++i)
