@@ -54,14 +54,12 @@
 		<activity android:name="headrick.brandon.controller.CreateGameActivity" android:label="Create Your New Game" android:launchMode="singleTask">
 		</activity>
 		
-		<activity android:name="headrick.brandon.controller.QuestChooserActivity" android:label="Choose the quest to play" android:launchMode="singleTask">
+		<activity android:name="headrick.brandon.controller.GameChooserActivity" android:label="Choose the game to play" android:launchMode="singleTask">
 		</activity>
         
 		<meta-data
 		    android:name="com.google.android.maps.v2.API_KEY"
 		    android:value="AIzaSyCnTXwDeHNWhRmXtVngCobPmI5qObxb3Uw"/>
-		<!-- headrick.brandon -->
-		
 		
     </application>
 

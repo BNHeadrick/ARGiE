@@ -10,21 +10,23 @@ import com.google.android.gms.maps.model.LatLng;
 public class QuestNode {
 	private QuestNode next, prev;
 	private String title, script, answer;
-	private double longitude, latitude;
-	LatLng point;
-
-	//scripts can either just be statements or questions that require answers.
-	/*
-	public QuestNode(String title, double latitude, double longitude, String script, String answer){
+	private LatLng point;
+	private int id;	//only used for database
+	
+	public QuestNode(){
+		
+	}
+	
+	public QuestNode(String title, LatLng point, String script, String answer){
 		this.title = title;
-		this.latitude = latitude;
-		this.longitude = longitude;
+		this.point = point;
 		this.script = script;
 		this.answer = answer;
 	}
-	*/
 	
-	public QuestNode(String title, LatLng point, String script, String answer){
+	//constructor to be used when pulling from a database
+	public QuestNode(int id, String title, LatLng point, String script, String answer){
+		this.id = id;
 		this.title = title;
 		this.point = point;
 		this.script = script;
@@ -55,22 +57,6 @@ public class QuestNode {
 		this.answer = answer;
 	}
 
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(int longitude) {
-		this.longitude = longitude;
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(int latitude) {
-		this.latitude = latitude;
-	}
-
 	public QuestNode getNext() {
 		return next;
 	}
@@ -94,5 +80,22 @@ public class QuestNode {
 	public void setPoint(LatLng point) {
 		this.point = point;
 	}
+	
+	public double getLatitude(){
+		return point.latitude;
+	}
+	
+	public double getLongitude(){
+		return point.longitude;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	
 }

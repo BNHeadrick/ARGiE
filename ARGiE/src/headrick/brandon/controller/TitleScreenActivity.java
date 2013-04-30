@@ -9,7 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+/**
+ * 
+ * @author Brandon Headrick
+ *
+ */
 public class TitleScreenActivity extends Activity implements View.OnClickListener {
 	/** Called when the activity is first created. */
 
@@ -32,7 +36,7 @@ public class TitleScreenActivity extends Activity implements View.OnClickListene
 		createGame = (Button) findViewById(R.id.bCreateGame);
 		settings = (Button) findViewById(R.id.bSettings);
 		about = (Button) findViewById(R.id.bAbout);
-		Log.d("RAD", ""+settings);
+		
 		playGame.setOnClickListener(this);
 		createGame.setOnClickListener(this);
 		settings.setOnClickListener(this);
@@ -46,7 +50,7 @@ public class TitleScreenActivity extends Activity implements View.OnClickListene
 		switch (v.getId()){
 		case R.id.bPlayGame:
 			Log.w("myApp", "newgame");
-			intent = new Intent(TitleScreenActivity.this, QuestChooserActivity.class);
+			intent = new Intent(TitleScreenActivity.this, GameChooserActivity.class);
 			startActivity(intent);
 			break;
 		case R.id.bCreateGame:

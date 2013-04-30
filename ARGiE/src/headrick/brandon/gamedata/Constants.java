@@ -8,6 +8,7 @@ public final class Constants {
 	
 	//gametypes
 	public static final String WAYPOINT = "waypoint";
-	
+	public static final int LABEL_X_OFFSET = 45;
+	public static final int LABEL_Y_OFFSET = 40;
 
 }

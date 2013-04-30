@@ -14,14 +14,14 @@ import android.widget.ListView;
 
 import headrick.brandon.R;
 
-public class QuestChooserActivity extends Activity
+public class GameChooserActivity extends Activity
 {
 	
 	  @Override
 	  protected void onCreate(Bundle savedInstanceState) 
 	  {
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.quest_chooser_screen);
+	    setContentView(R.layout.game_chooser_screen);
 
 	    final ListView listview = (ListView) findViewById(R.id.listview);
 	    /*

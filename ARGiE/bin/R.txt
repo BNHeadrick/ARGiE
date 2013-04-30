@@ -39,8 +39,8 @@ int id tvTitle 0x7f04000f
 int layout about_screen 0x7f030000
 int layout create_game_screen 0x7f030001
 int layout create_quest_screen 0x7f030002
-int layout linear_test 0x7f030003
-int layout quest_chooser_screen 0x7f030004
+int layout game_chooser_screen 0x7f030003
+int layout linear_test 0x7f030004
 int layout settings_screen 0x7f030005
 int layout splash_screen 0x7f030006
 int layout title_screen 0x7f030007

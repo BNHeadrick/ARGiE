@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
@@ -12,6 +13,7 @@ import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -34,10 +36,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 
 import headrick.brandon.gamedata.GameState;
+import headrick.brandon.gamedata.Constants;
 
 //public class CreateGameActivity extends Activity {
 public class CreateGameActivity extends FragmentActivity 
-implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener {
+implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, OnInfoWindowClickListener {
 	private char tempLabel = 'A'; //temporariry just for debugging; remove later.
 	private GoogleMap mMap;
 	private ArrayList<LatLng> tempArrList = new ArrayList<LatLng>();
@@ -84,6 +87,7 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener {
         mMap.setOnMapClickListener(this);
         mMap.setOnMapLongClickListener(this);
         mMap.setOnCameraChangeListener(this);
+        mMap.setOnInfoWindowClickListener(this);
     }
 	
 	@Override
@@ -96,7 +100,8 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener {
 		// TODO Auto-generated method stub
 		//System.out.println("lat long is: " + point);
 		
-		mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude)).title("Quest"));
+		mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude))
+			.title("Quest " + String.valueOf(tempLabel)));
 		
 		Bitmap.Config conf = Bitmap.Config.ARGB_8888; 
 		Bitmap bmp = Bitmap.createBitmap(200, 50, conf); 
@@ -108,14 +113,13 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener {
 		paint.setTextSize(55);
 		
 		//below has debugging code!**/
-		canvas.drawText(String.valueOf(tempLabel), 45, 40, paint); // paint defines the text color, stroke width, size
+		canvas.drawText(String.valueOf(tempLabel), Constants.LABEL_X_OFFSET, Constants.LABEL_Y_OFFSET, paint); // paint defines the text color, stroke width, size
 		tempLabel++;
 		/**/
 		
 		
 		mMap.addMarker(new MarkerOptions()
 			.position(new LatLng(point.latitude, point.longitude))
-			.title("Quest")
 		    //.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2))
 		    .icon(BitmapDescriptorFactory.fromBitmap(bmp))
 		    .anchor(0.5f, 1)
@@ -140,5 +144,11 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener {
 	public void onMapClick(LatLng point) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void onInfoWindowClick(Marker marker) {
+		// TODO Auto-generated method stub
+		System.out.println("hai thar: "+ marker.getTitle());
 	}
 }
