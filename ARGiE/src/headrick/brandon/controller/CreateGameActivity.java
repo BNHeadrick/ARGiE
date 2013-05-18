@@ -1,6 +1,6 @@
 package headrick.brandon.controller;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -43,7 +43,7 @@ public class CreateGameActivity extends FragmentActivity
 implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, OnInfoWindowClickListener {
 	private char tempLabel = 'A'; //temporariry just for debugging; remove later.
 	private GoogleMap mMap;
-	private ArrayList<LatLng> tempArrList = new ArrayList<LatLng>();
+	//private ArrayList<LatLng> tempArrList = new ArrayList<LatLng>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
