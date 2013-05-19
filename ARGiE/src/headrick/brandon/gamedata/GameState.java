@@ -6,10 +6,9 @@ import com.google.android.gms.maps.model.LatLng;
 
 import headrick.brandon.model.QuestNode;
 
-/*
- * Singleton class that holds the state of the game.  
- * Each game is a set of quest nodes which form a linked list.  
- * For now, since quests do not branch (at least in simple quests for the first release), this is adequate.
+/**
+ * Singleton class that holds the state of the game and provides access to 
+ * the quest information
  */
 public class GameState {
 	private static GameState instance = null;
@@ -19,6 +18,10 @@ public class GameState {
 		//restrict instantiation
 	}
 	
+	/**
+	 * returns the singleton object (instance) for the GameState class
+	 * @return the GameState singleton object
+	 */
 	public static GameState getInstance(){
 		if(instance == null){
 			instance = new GameState();
@@ -26,7 +29,13 @@ public class GameState {
 		return instance;
 	}
 	
-	//it simply adds a quest to the end of the quest linked list.
+	/**
+	 * creates and appends a QuestNode object to the end of the QuestNode LinkedList
+	 * @param title the title of the quest object
+	 * @param point the location of the quest object to be used on a map
+	 * @param script the text used to prompt the user when they arrive at a quest location
+	 * @param answer the required text response when a user is locked from proceeding from one quest to another
+	 */
 	public void addQuest(String title, LatLng point, String script, String answer){
 		questNodes.add(new QuestNode(title, point, script, answer));
 	}

@@ -25,7 +25,10 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -46,12 +49,20 @@ import headrick.brandon.gamedata.GameState;
 import headrick.brandon.gamedata.Constants;
 import headrick.brandon.utilities.DBReadWrite;
 
-//public class CreateGameActivity extends Activity {
+/**
+ * The main view for game creation.  Provides the tools for CRUD of a game's
+ * properties, including quest placement.
+ * @author Brandon Headrick
+ *
+ */
 public class CreateGameActivity extends FragmentActivity 
-implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener {
+implements OnMapClickListener, OnMapLongClickListener, 
+OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener, 
+OnCheckedChangeListener{
 	private char questLabel = Constants.INITIAL_LABEL_VAL; //temporariry just for debugging; remove later.
 	private GoogleMap mMap;
-	Button saveGame, clearGame;
+	Button saveGame, clearGame, deleteQuest, moveQuest, gameOptions;
+	ToggleButton editGame;
 	DBReadWrite dbReadWrite;
 	AlertDialog.Builder alert;
 	AlertDialog alertDialog;
@@ -78,6 +89,10 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
 	    
 	}
 	
+	/**
+	 * Moves the map to the passed in location
+	 * @param point the LatLng object used to move the map to a specific location
+	 */
 	private void setupStartLocation(LatLng point){
 		CameraUpdate center=
 		        CameraUpdateFactory.newLatLng(new LatLng(point.latitude,
@@ -109,9 +124,15 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
 		// TODO Auto-generated method stub
 		saveGame = (Button) findViewById(R.id.bSaveGame);
 		clearGame = (Button) findViewById(R.id.bClearGame);
+		editGame = (ToggleButton) findViewById(R.id.tbEditGame);
+		deleteQuest = (Button) findViewById(R.id.bDeleteQuest);
+		moveQuest = (Button) findViewById(R.id.bMoveQuest);
+		gameOptions = (Button) findViewById(R.id.bGameOptions);
+		
 		
 		saveGame.setOnClickListener(this);
 		clearGame.setOnClickListener(this);
+		editGame.setOnCheckedChangeListener(this);
 	}
     
 	public void onClick(View v) {
@@ -173,17 +194,20 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
 			
 			break;
 			
-		case R.id.bDeleteQuest:/*
-			Log.w("myApp", "creategame");
-			intent = new Intent(TitleScreenActivity.this, CreateGameActivity.class);
-			startActivity(intent);
-			*/
+		case R.id.bDeleteQuest:
+			
 			
 			break;
+		case R.id.bMoveQuest:
 			
 			
-		
+			break;
+		case R.id.bGameOptions:
+			
+			
+			break;
 		}
+		
 		
 	}
 	
@@ -238,6 +262,8 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
 		
 		
 	}
+	
+	
 	@Override
 	public void onMapClick(LatLng point) {
 		// TODO Auto-generated method stub
@@ -247,6 +273,25 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
 	@Override
 	public void onInfoWindowClick(Marker marker) {
 		// TODO Auto-generated method stub
-		//System.out.println("hai thar: "+ marker.getTitle());
+		
+	}
+
+	//if the user clicks the edit button, change the viewable buttons on the bottom button bar to
+	//reflect the changed context
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		// TODO Auto-generated method stub
+		if(!isChecked)
+		{
+			gameOptions.setVisibility(View.INVISIBLE);
+			deleteQuest.setVisibility(View.VISIBLE);
+			moveQuest.setVisibility(View.VISIBLE);
+			
+		}
+		else{
+			gameOptions.setVisibility(View.VISIBLE);
+			deleteQuest.setVisibility(View.INVISIBLE);
+			moveQuest.setVisibility(View.INVISIBLE);
+		}
 	}
 }

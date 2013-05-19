@@ -1,5 +1,11 @@
 package headrick.brandon.gamedata;
 
+/**
+ * Provides common constants that may be used repeatedly in the application
+ * !May remove
+ * @author Brandon Headrick
+ *
+ */
 public final class Constants {
 	
 	private Constants(){

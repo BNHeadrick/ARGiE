@@ -10,7 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 /**
- * 
+ * Provides the user with the application's main navigation options in order for the user
+ * to choose what to do next.
  * @author Brandon Headrick
  *
  */

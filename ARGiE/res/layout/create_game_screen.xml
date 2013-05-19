@@ -22,20 +22,21 @@
 		        android:layout_height="wrap_content"
 		        android:background="?android:attr/selectableItemBackground"
 		        android:padding="10dip"
-		        android:layout_weight=".5"
+		        android:layout_weight=".3"
 		        android:text="@string/create_game_screen_save_button" />
 		    
 	
-		    <!-- 
-		    <Button
-		        android:id="@+id/bEditGame"
+		    
+		    <ToggleButton
+		        android:id="@+id/tbEditGame"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:background="?android:attr/selectableItemBackground"
 		        android:padding="10dip"
 		        android:layout_weight=".3"
-		        android:text="@string/create_game_screen_edit_button" />
-		     -->
+		        
+		        android:textOn="@string/create_game_screen_edit_button_on"
+		    	android:textOff="@string/create_game_screen_edit_button_off" />
 		     
 		    <Button
 		        android:id="@+id/bClearGame"
@@ -43,7 +44,7 @@
 		        android:layout_height="wrap_content"
 		        android:background="?android:attr/selectableItemBackground"
 		        android:padding="10dip"
-		        android:layout_weight=".5"
+		        android:layout_weight=".3"
 		        android:text="@string/create_game_screen_clear_button" />
 		    
 		    
@@ -69,16 +70,7 @@
 	        android:gravity="center"
 	        android:layout_weight="1">
 		    
-		    <!-- 
-		    <Button
-		        android:id="@+id/bAddQuest"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:background="?android:attr/selectableItemBackground"
-		        android:padding="10dip"
-		        android:layout_weight=".3"
-		        android:text="@string/create_game_screen_add_quest_button" />
-		     -->
+		     
 		    <Button
 		        android:id="@+id/bDeleteQuest"
 		        android:layout_width="wrap_content"
@@ -89,13 +81,27 @@
 		        android:text="@string/create_game_screen_delete_quest_button" />
 		    
 		    <Button
+		        android:id="@+id/bGameOptions"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="?android:attr/selectableItemBackground"
+		        android:padding="10dip"
+		        android:layout_weight="1"
+		        android:text="@string/create_game_screen_game_options_button"
+		        android:visibility="invisible"/>
+		        
+		        
+		    
+		    <Button
 		        android:id="@+id/bMoveQuest"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:background="?android:attr/selectableItemBackground"
 		        android:padding="10dip"
 		        android:layout_weight=".5"
-		        android:text="@string/create_game_screen_move_quest_button" />
+		        android:text="@string/create_game_screen_move_quest_button"/>
+		    
+		    
 		    
 		</LinearLayout>
 	</LinearLayout>

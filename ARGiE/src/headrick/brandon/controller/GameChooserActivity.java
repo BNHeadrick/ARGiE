@@ -14,6 +14,12 @@ import android.widget.ListView;
 
 import headrick.brandon.R;
 
+/**
+ * Provides the interface for the user to choose which already created game
+ * to execute.
+ * @author Brandon Headrick
+ *
+ */
 public class GameChooserActivity extends Activity
 {
 	

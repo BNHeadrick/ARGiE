@@ -1,6 +1,6 @@
 package headrick.brandon.model;
 
-/*
+/**
  * The simpliest of game types.  This type of game has quests
  * that are to be done in a sequential order.  They can be as
  * simple as going to location X then going to location Y, or
@@ -11,6 +11,7 @@ package headrick.brandon.model;
  * arriving at the location or (at the moment) as complicated
  * as answering a question once the user has arrived at that
  * location.
+ * @author Brandon Headrick
  */
 public class WaypointGame extends BaseGame {
 	private String type = "Waypoint";

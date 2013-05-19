@@ -13,7 +13,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-
+/**
+ * Provides the database schema that will be used as well as CRUD functionality
+ * @author Brandon Headrick
+ *
+ */
 public class DatabaseHandler extends SQLiteOpenHelper {
  
     // All Static variables
@@ -36,6 +40,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String QUEST_KEY_LAT = "latitude";
     private static final String QUEST_KEY_LONG = "longitude";
     
+    //QuestNodes table schema
+    private static final String QUEST_SCHEMA = "CREATE TABLE " + TABLE_QUESTS + "("
+            + QUEST_KEY_ID + " INTEGER PRIMARY KEY," + QUEST_KEY_TITLE + " TEXT,"
+            + QUEST_KEY_SCRIPT + " TEXT," + QUEST_KEY_ANSWER + " TEXT,"
+            + QUEST_KEY_LAT + " REAL," + QUEST_KEY_LONG + " REAL"
+            + ")";
+    
+    //Games table schema
+    //todo
+    
     //Games Table Column names
     private static final String GAME_KEY_ID = "id";
     private static final String GAME_KEY_TITLE = "title";
@@ -44,16 +58,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
- 
-    // Creating Tables
+    //create tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_QUESTS + "("
-                + QUEST_KEY_ID + " INTEGER PRIMARY KEY," + QUEST_KEY_TITLE + " TEXT,"
-                + QUEST_KEY_SCRIPT + " TEXT," + QUEST_KEY_ANSWER + " TEXT,"
-                + QUEST_KEY_LAT + " REAL," + QUEST_KEY_LONG + " REAL"
-                + ")";
-        db.execSQL(CREATE_CONTACTS_TABLE);
+        db.execSQL(QUEST_SCHEMA);
     }
  
     // Upgrading database
@@ -66,7 +74,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
     
- // Adding new quest
+    /**
+     * Inserts new row (quest) into the quest table
+     * @param quest a QuestNode object that is to be added
+     */
     public void addQuestNode(QuestNode quest) {
         SQLiteDatabase db = this.getWritableDatabase();
      
@@ -82,7 +93,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
      
-    // Getting single quest
+    /**
+     * return single quest from the QuestNode Table
+     * @param id
+     * @return A single QuestNode object from the QuestNode table
+     */
     public QuestNode getQuestNode(int id) {
     	
         SQLiteDatabase db = this.getReadableDatabase();
@@ -104,7 +119,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return quest;
     }
      
-    // Getting All QuestNodes
+    /**
+     * Returns an List of all of the questnode objects parsed from the QuestNode table
+     * @return a list that contains every QuestNode in the table
+     */
     public List<QuestNode> getAllQuestNodes() {
         List<QuestNode> questList = new ArrayList<QuestNode>();
         // Select All Query
@@ -129,12 +147,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 questList.add(quest);
             } while (cursor.moveToNext());
         }
-     
-        // return quest list
         return questList;
     }
      
-    // Getting quests Count
+    /**
+     * returns the number of elements in the quest table
+     * @return int that represents the quantity of quests in the table
+     */
     public int getQuestNodesCount() {
         String countQuery = "SELECT  * FROM " + TABLE_QUESTS;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -144,7 +163,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return count
         return cursor.getCount();
     }
-    // Updating single quest
+    /**
+     * update a single quest element in the questNode table
+     * @param quest the QuestNode object that is to be updated
+     * @return the id of the element that was updated
+     */
     public int updateQuestNode(QuestNode quest) {
         SQLiteDatabase db = this.getWritableDatabase();
      
@@ -160,7 +183,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(quest.getId()) });
     }
      
-    // Deleting single quest
+    /**
+     * delete a specific quest element from the QuestNode table
+     * @param quest
+     */
     public void deleteQuestNode(QuestNode quest) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_QUESTS, QUEST_KEY_ID + " = ?",
@@ -168,7 +194,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
     
-    //delete all rows in the table
+    /**
+     * removes all elements from a table
+     */
     public void clearTable(){
     	SQLiteDatabase db = this.getWritableDatabase();
     	String deleteSQL = "DELETE FROM " + TABLE_QUESTS;

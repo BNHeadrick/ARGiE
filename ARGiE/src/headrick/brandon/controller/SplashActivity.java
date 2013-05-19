@@ -5,7 +5,12 @@ import android.app.Activity;
 import android.content.Intent;
 //import android.content.res.AssetManager;
 import android.os.Bundle;
-
+/**
+ * Provides the Splash (title) Screen for the application.
+ * May remove later.
+ * @author Brandon Headrick
+ *
+ */
 public class SplashActivity extends Activity {
 
 //	MediaPlayer ourSound;
@@ -14,21 +19,14 @@ public class SplashActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		//AssetManager assetManager = getAssets();		
-		//FileCopier.copy("earlyInput.xml", assetManager);
-		
 		setContentView(R.layout.splash_screen);
-		
-		// copy default-quest to sd card
-		//FileCopier.copy("default-quest.xml", getAssets());
-		
 		
 		Thread timer = new Thread(){
 			
 			@Override
 			public void run(){
 				try{
-					sleep(30);
+					sleep(1000);
 				} 
 				catch (InterruptedException ie){
 					ie.printStackTrace();
@@ -36,7 +34,6 @@ public class SplashActivity extends Activity {
 				
 				Intent ourIntent = new Intent(SplashActivity.this, TitleScreenActivity.class);
                 startActivity(ourIntent);
-				
 			}
 		};
 		timer.start();
@@ -47,7 +44,6 @@ public class SplashActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-//		ourSound.release();
 		finish();	//finish splash activity, get rid of it, unless they open app again.
 	}
 
