@@ -8,7 +8,6 @@ import com.google.android.gms.maps.model.LatLng;
  *
  */
 public class QuestNode {
-	private QuestNode next, prev;
 	private String title, script, answer;
 	private LatLng point;
 	private int id;	//only used for database
@@ -55,22 +54,6 @@ public class QuestNode {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
-	}
-
-	public QuestNode getNext() {
-		return next;
-	}
-
-	public void setNext(QuestNode next) {
-		this.next = next;
-	}
-
-	public QuestNode getPrev() {
-		return prev;
-	}
-
-	public void setPrev(QuestNode prev) {
-		this.prev = prev;
 	}
 	
 	public LatLng getPoint() {

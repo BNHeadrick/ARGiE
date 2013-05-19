@@ -9,6 +9,6 @@ package headrick.brandon;
 
 public final class Manifest {
     public static final class permission {
-        public static final String brandon="headrick.brandon";
+        public static final String MAPS_RECEIVE="headrick.brandon.ARGiE.permission.MAPS_RECEIVE";
     }
 }

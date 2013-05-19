@@ -5,12 +5,13 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="15" />
+        android:targetSdkVersion="17" />
     
     <permission
-        android:name="headrick.brandon"
+        android:name="headrick.brandon.ARGiE.permission.MAPS_RECEIVE"
         android:protectionLevel="signature"/>
-	<uses-permission android:name="com.example.mapdemo.permission.MAPS_RECEIVE"/>
+    
+	<uses-permission android:name="headrick.brandon.ARGiE.permission.MAPS_RECEIVE"/>
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -48,8 +49,6 @@
 		
 		<activity android:name="headrick.brandon.controller.AboutScreenActivity" android:label="About" android:launchMode="singleTask">
 		</activity>
-		
-		<!-- <activity android:name=".activities.ListMenu" android:label="Choose Quest XML" /> -->
 		
 		<activity android:name="headrick.brandon.controller.CreateGameActivity" android:label="Create Your New Game" android:launchMode="singleTask">
 		</activity>

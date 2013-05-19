@@ -25,14 +25,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
  
     // QuestNodes table name
     private static final String TABLE_QUESTS = "quests";
+    // Games table name
+    private static final String TABLE_GAMES = "games";
  
     // QuestNodes Table Columns names
-    private static final String KEY_ID = "id";
-    private static final String KEY_TITLE = "title";
-    private static final String KEY_SCRIPT = "script";
-    private static final String KEY_ANSWER = "answer";
-    private static final String KEY_LAT = "latitude";
-    private static final String KEY_LONG = "longitude";
+    private static final String QUEST_KEY_ID = "id";
+    private static final String QUEST_KEY_TITLE = "title";
+    private static final String QUEST_KEY_SCRIPT = "script";
+    private static final String QUEST_KEY_ANSWER = "answer";
+    private static final String QUEST_KEY_LAT = "latitude";
+    private static final String QUEST_KEY_LONG = "longitude";
+    
+    //Games Table Column names
+    private static final String GAME_KEY_ID = "id";
+    private static final String GAME_KEY_TITLE = "title";
+    
  
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,9 +49,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_QUESTS + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TITLE + " TEXT,"
-                + KEY_SCRIPT + " TEXT," + KEY_ANSWER + " TEXT,"
-                + KEY_LAT + " REAL," + KEY_LONG + " REAL"
+                + QUEST_KEY_ID + " INTEGER PRIMARY KEY," + QUEST_KEY_TITLE + " TEXT,"
+                + QUEST_KEY_SCRIPT + " TEXT," + QUEST_KEY_ANSWER + " TEXT,"
+                + QUEST_KEY_LAT + " REAL," + QUEST_KEY_LONG + " REAL"
                 + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
@@ -64,11 +71,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
      
         ContentValues values = new ContentValues();
-        values.put(KEY_TITLE, quest.getTitle());
-        values.put(KEY_SCRIPT, quest.getScript()); 
-        values.put(KEY_ANSWER, quest.getAnswer()); 
-        values.put(KEY_LAT, quest.getLatitude());
-        values.put(KEY_LONG, quest.getLongitude());
+        values.put(QUEST_KEY_TITLE, quest.getTitle());
+        values.put(QUEST_KEY_SCRIPT, quest.getScript()); 
+        values.put(QUEST_KEY_ANSWER, quest.getAnswer()); 
+        values.put(QUEST_KEY_LAT, quest.getLatitude());
+        values.put(QUEST_KEY_LONG, quest.getLongitude());
      
         // Inserting Row
         db.insert(TABLE_QUESTS, null, values);
@@ -80,8 +87,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     	
         SQLiteDatabase db = this.getReadableDatabase();
      
-        Cursor cursor = db.query(TABLE_QUESTS, new String[] { KEY_ID,
-                KEY_TITLE, KEY_SCRIPT, KEY_ANSWER, KEY_LAT, KEY_LONG }, KEY_ID + "=?",
+        Cursor cursor = db.query(TABLE_QUESTS, new String[] { QUEST_KEY_ID,
+        		QUEST_KEY_TITLE, QUEST_KEY_SCRIPT, QUEST_KEY_ANSWER, QUEST_KEY_LAT, QUEST_KEY_LONG }, QUEST_KEY_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -142,21 +149,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
      
         ContentValues values = new ContentValues();
-        values.put(KEY_TITLE, quest.getTitle());
-        values.put(KEY_SCRIPT, quest.getScript());
-        values.put(KEY_ANSWER, quest.getAnswer()); 
-        values.put(KEY_LAT, quest.getLatitude());
-        values.put(KEY_LONG, quest.getLongitude());
+        values.put(QUEST_KEY_TITLE, quest.getTitle());
+        values.put(QUEST_KEY_SCRIPT, quest.getScript());
+        values.put(QUEST_KEY_ANSWER, quest.getAnswer()); 
+        values.put(QUEST_KEY_LAT, quest.getLatitude());
+        values.put(QUEST_KEY_LONG, quest.getLongitude());
      
         // updating row
-        return db.update(TABLE_QUESTS, values, KEY_ID + " = ?",
+        return db.update(TABLE_QUESTS, values, QUEST_KEY_ID + " = ?",
                 new String[] { String.valueOf(quest.getId()) });
     }
      
     // Deleting single quest
     public void deleteQuestNode(QuestNode quest) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_QUESTS, KEY_ID + " = ?",
+        db.delete(TABLE_QUESTS, QUEST_KEY_ID + " = ?",
                 new String[] { String.valueOf(quest.getId()) });
         db.close();
     }

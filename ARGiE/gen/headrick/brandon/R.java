@@ -176,25 +176,23 @@ containing a value of this type.
     }
     public static final class id {
         public static final int aboutCredits=0x7f050005;
-        public static final int bAbout=0x7f050013;
-        public static final int bAddQuest=0x7f05000b;
-        public static final int bClearGame=0x7f050009;
-        public static final int bCreateGame=0x7f050011;
-        public static final int bDeleteQuest=0x7f05000c;
-        public static final int bEditGame=0x7f050008;
-        public static final int bMoveQuest=0x7f05000d;
-        public static final int bPlayGame=0x7f050010;
+        public static final int bAbout=0x7f050011;
+        public static final int bClearGame=0x7f050008;
+        public static final int bCreateGame=0x7f05000f;
+        public static final int bDeleteQuest=0x7f05000a;
+        public static final int bMoveQuest=0x7f05000b;
+        public static final int bPlayGame=0x7f05000e;
         public static final int bSaveGame=0x7f050007;
-        public static final int bSettings=0x7f050012;
+        public static final int bSettings=0x7f050010;
         public static final int hybrid=0x7f050004;
         public static final int legal=0x7f050006;
-        public static final int listview=0x7f05000e;
-        public static final int map=0x7f05000a;
+        public static final int listview=0x7f05000c;
+        public static final int map=0x7f050009;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
         public static final int terrain=0x7f050003;
-        public static final int tvTitle=0x7f05000f;
+        public static final int tvTitle=0x7f05000d;
     }
     public static final class layout {
         public static final int about_screen=0x7f030000;

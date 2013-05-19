@@ -22,11 +22,11 @@
 		        android:layout_height="wrap_content"
 		        android:background="?android:attr/selectableItemBackground"
 		        android:padding="10dip"
-		        android:layout_weight=".3"
+		        android:layout_weight=".5"
 		        android:text="@string/create_game_screen_save_button" />
 		    
 	
-		    
+		    <!-- 
 		    <Button
 		        android:id="@+id/bEditGame"
 		        android:layout_width="wrap_content"
@@ -35,14 +35,15 @@
 		        android:padding="10dip"
 		        android:layout_weight=".3"
 		        android:text="@string/create_game_screen_edit_button" />
-		    
+		     -->
+		     
 		    <Button
 		        android:id="@+id/bClearGame"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:background="?android:attr/selectableItemBackground"
 		        android:padding="10dip"
-		        android:layout_weight=".3"
+		        android:layout_weight=".5"
 		        android:text="@string/create_game_screen_clear_button" />
 		    
 		    
@@ -68,6 +69,7 @@
 	        android:gravity="center"
 	        android:layout_weight="1">
 		    
+		    <!-- 
 		    <Button
 		        android:id="@+id/bAddQuest"
 		        android:layout_width="wrap_content"
@@ -76,14 +78,14 @@
 		        android:padding="10dip"
 		        android:layout_weight=".3"
 		        android:text="@string/create_game_screen_add_quest_button" />
-		    
+		     -->
 		    <Button
 		        android:id="@+id/bDeleteQuest"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:background="?android:attr/selectableItemBackground"
 		        android:padding="10dip"
-		        android:layout_weight=".3"
+		        android:layout_weight=".5"
 		        android:text="@string/create_game_screen_delete_quest_button" />
 		    
 		    <Button
@@ -92,7 +94,7 @@
 		        android:layout_height="wrap_content"
 		        android:background="?android:attr/selectableItemBackground"
 		        android:padding="10dip"
-		        android:layout_weight=".3"
+		        android:layout_weight=".5"
 		        android:text="@string/create_game_screen_move_quest_button" />
 		    
 		</LinearLayout>

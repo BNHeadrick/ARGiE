@@ -1,6 +1,8 @@
 package headrick.brandon.model;
 
+import java.util.LinkedList;
+
 public class BaseGame {
-	private QuestNode quest;
+	private LinkedList<QuestNode> questNodes;
 
 }

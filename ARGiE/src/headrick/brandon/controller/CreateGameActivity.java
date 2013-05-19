@@ -22,8 +22,15 @@ import headrick.brandon.R;
 //import android.content.Intent;
 //import android.content.res.AssetManager;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -37,12 +44,17 @@ import android.os.Bundle;
 
 import headrick.brandon.gamedata.GameState;
 import headrick.brandon.gamedata.Constants;
+import headrick.brandon.utilities.DBReadWrite;
 
 //public class CreateGameActivity extends Activity {
 public class CreateGameActivity extends FragmentActivity 
-implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, OnInfoWindowClickListener {
-	private char tempLabel = 'A'; //temporariry just for debugging; remove later.
+implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener {
+	private char questLabel = Constants.INITIAL_LABEL_VAL; //temporariry just for debugging; remove later.
 	private GoogleMap mMap;
+	Button saveGame, clearGame;
+	DBReadWrite dbReadWrite;
+	AlertDialog.Builder alert;
+	AlertDialog alertDialog;
 	//private ArrayList<LatLng> tempArrList = new ArrayList<LatLng>();
 	
 	@Override
@@ -50,7 +62,10 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_game_screen);
+		initializeVars();
 		setupMapIfNeeded();
+		dbReadWrite = new DBReadWrite(this.getApplicationContext());
+		
 
 		mMap.setMyLocationEnabled(true);
 		Criteria criteria = new Criteria();
@@ -89,6 +104,88 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
         mMap.setOnCameraChangeListener(this);
         mMap.setOnInfoWindowClickListener(this);
     }
+    
+    private void initializeVars() {
+		// TODO Auto-generated method stub
+		saveGame = (Button) findViewById(R.id.bSaveGame);
+		clearGame = (Button) findViewById(R.id.bClearGame);
+		
+		saveGame.setOnClickListener(this);
+		clearGame.setOnClickListener(this);
+	}
+    
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+//		Intent intent;
+		switch (v.getId()){
+		case R.id.bSaveGame:
+			Log.w("myApp", "bSaveGame");
+			
+			alert = new AlertDialog.Builder(this);
+            alert.setTitle("Save The Game Map");
+            alert.setMessage("Are you sure you want to save the current game map?");
+ 
+            alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            	dbReadWrite.writeQuestData();
+    			Toast.makeText(getApplicationContext(), 
+                        "Quest Saved!", Toast.LENGTH_LONG).show();
+              }
+            });
+ 
+            alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+                  dialog.cancel();
+              }
+            });
+            alertDialog = alert.create();
+            alertDialog.show();
+			
+			
+			break;
+		
+			
+		case R.id.bClearGame:
+			alert = new AlertDialog.Builder(this);
+            alert.setTitle("Clear The Game Map");
+            alert.setMessage("Are you sure you want to clear the game of all quests?");
+ 
+            alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            	questLabel = Constants.INITIAL_LABEL_VAL;
+    			GameState.getInstance().removeAllQuests();
+    			mMap.clear();
+    			Toast.makeText(getApplicationContext(), 
+                        "Game Map Cleared!", Toast.LENGTH_LONG).show();
+              }
+            });
+ 
+            alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+                  dialog.cancel();
+              }
+            });
+            alertDialog = alert.create();
+            alertDialog.show();
+
+			
+			break;
+			
+		case R.id.bDeleteQuest:/*
+			Log.w("myApp", "creategame");
+			intent = new Intent(TitleScreenActivity.this, CreateGameActivity.class);
+			startActivity(intent);
+			*/
+			
+			break;
+			
+			
+		
+		}
+		
+	}
 	
 	@Override
 	public void onCameraChange(CameraPosition position) {
@@ -101,7 +198,7 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
 		//System.out.println("lat long is: " + point);
 		
 		mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude))
-			.title("Quest " + String.valueOf(tempLabel)));
+			.title("Quest " + String.valueOf(questLabel)));
 		
 		Bitmap.Config conf = Bitmap.Config.ARGB_8888; 
 		Bitmap bmp = Bitmap.createBitmap(200, 50, conf); 
@@ -113,8 +210,8 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
 		paint.setTextSize(55);
 		
 		//below has debugging code!**/
-		canvas.drawText(String.valueOf(tempLabel), Constants.LABEL_X_OFFSET, Constants.LABEL_Y_OFFSET, paint); // paint defines the text color, stroke width, size
-		tempLabel++;
+		canvas.drawText(String.valueOf(questLabel), Constants.LABEL_X_OFFSET, Constants.LABEL_Y_OFFSET, paint); // paint defines the text color, stroke width, size
+		
 		/**/
 		
 		
@@ -129,14 +226,15 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
         
         
         
-        if(GameState.getInstance().getRoot()!=null){
+        if(!GameState.getInstance().isEmpty()){
         	System.out.println(GameState.getInstance().getTail().getPoint() + " " + point);
         	//mMap.addPolyline((new PolylineOptions()).add(tempArrList.get(tempArrList.size()-1), point));
         	mMap.addPolyline((new PolylineOptions()).add(GameState.getInstance().getTail().getPoint(), point));
         }
         //tempArrList.add(point);
-        GameState.getInstance().addQuest("title1", point, "script1", "answer1");
+        GameState.getInstance().addQuest("title"+String.valueOf(questLabel), point, "script" + String.valueOf(questLabel), "answer"+String.valueOf(questLabel));
         
+        questLabel++;
 		
 		
 	}
@@ -149,6 +247,6 @@ implements OnMapClickListener, OnMapLongClickListener, OnCameraChangeListener, O
 	@Override
 	public void onInfoWindowClick(Marker marker) {
 		// TODO Auto-generated method stub
-		System.out.println("hai thar: "+ marker.getTitle());
+		//System.out.println("hai thar: "+ marker.getTitle());
 	}
 }

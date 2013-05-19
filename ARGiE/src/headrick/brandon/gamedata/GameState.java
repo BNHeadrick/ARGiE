@@ -1,5 +1,7 @@
 package headrick.brandon.gamedata;
 
+import java.util.LinkedList;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import headrick.brandon.model.QuestNode;
@@ -11,7 +13,7 @@ import headrick.brandon.model.QuestNode;
  */
 public class GameState {
 	private static GameState instance = null;
-	private QuestNode root, tail;
+	LinkedList<QuestNode> questNodes  = new LinkedList<QuestNode>();
 	
 	private GameState(){
 		//restrict instantiation
@@ -26,22 +28,26 @@ public class GameState {
 	
 	//it simply adds a quest to the end of the quest linked list.
 	public void addQuest(String title, LatLng point, String script, String answer){
-		if(root == null){
-			root = new QuestNode(title, point, script, answer);
-			
-			tail = root;
-		}
-		else{
-			tail.setNext(new QuestNode(title, point, script, answer));
-			tail = tail.getNext();
-		}
+		questNodes.add(new QuestNode(title, point, script, answer));
 	}
 	
 	public QuestNode getRoot(){
-		return root;
+		return questNodes.getFirst();
 	}
 	
 	public QuestNode getTail(){
-		return tail;
+		return questNodes.getLast();
+	}
+	
+	public LinkedList<QuestNode> getQuestNodes(){
+		return questNodes;
+	}
+	
+	public boolean isEmpty(){
+		return questNodes.size() == 0;
+	}
+	
+	public void removeAllQuests(){
+		questNodes.clear();
 	}
 }

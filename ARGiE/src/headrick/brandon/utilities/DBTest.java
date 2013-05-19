@@ -22,11 +22,12 @@ public class DBTest extends Activity {
         /**
          * CRUD Operations
          * */
-        // Inserting Contacts
+        // Inserting quests
         Log.d("Insert: ", "Inserting .."); 
         
-        db.clearTable();
+        //db.clearTable();
         
+        /*
         LatLng point = new LatLng(1.11, 2.22);
         
         db.addQuestNode(new QuestNode("title1", point, "script1", "answer1"));        
@@ -35,15 +36,16 @@ public class DBTest extends Activity {
         db.addQuestNode(new QuestNode("title4", point, "script4", "answer4"));
         db.addQuestNode(new QuestNode("title5", point, "script5", "answer5"));
          
-        // Reading all contacts
+        // Reading all quests
         Log.d("Reading: ", "Reading all quests.."); 
         List<QuestNode> questNodes = db.getAllQuestNodes();       
          
         for (QuestNode qn : questNodes) {
             String log = "Id: "+qn.getId()+" ,title: " + qn.getTitle() + " ,script: " + qn.getScript()
             		+ " ,latitude: " + qn.getLatitude() + " ,longitude: " + qn.getLongitude();
-                // Writing Contacts to log
+                // Writing quests to log
         Log.d("db output: ", log);
-    }
+        }
+        */
     }
 }
