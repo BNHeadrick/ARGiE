@@ -47,6 +47,7 @@ import android.os.Bundle;
 
 import headrick.brandon.gamedata.GameState;
 import headrick.brandon.gamedata.Constants;
+import headrick.brandon.model.QuestNode;
 import headrick.brandon.utilities.DBReadWrite;
 
 /**
@@ -86,6 +87,19 @@ OnCheckedChangeListener{
 	    LatLng userLoc = new LatLng(location.getLatitude(), location.getLongitude());
 	    
 	    setupStartLocation(userLoc);
+	    
+	    //rebuild the map for configuration changes
+	    if(!GameState.getInstance().isEmpty()){
+	    	QuestNode prevQuest = null;
+	    	for(QuestNode aQuest : GameState.getInstance().getQuestNodes()){
+	    		placeMapMarker(aQuest.getPoint());
+	    		if(aQuest != GameState.getInstance().getRoot()){
+	    			drawQuestPath(prevQuest, aQuest);
+	    		}
+	    		questLabel++;
+	    		prevQuest = aQuest;
+	    	}
+	    }
 	    
 	}
 	
@@ -218,27 +232,38 @@ OnCheckedChangeListener{
 	}
 	@Override
 	public void onMapLongClick(LatLng point) {
-		// TODO Auto-generated method stub
-		//System.out.println("lat long is: " + point);
+		//the following draws a new label and path for the user and adds the new quest to the GameState object
+		placeMapMarker(point);
+		QuestNode newQuest = new QuestNode("title"+String.valueOf(questLabel), point, "script" + String.valueOf(questLabel), "answer"+String.valueOf(questLabel));
+		if(!GameState.getInstance().isEmpty()){
+			drawQuestPath(GameState.getInstance().getTail(), newQuest);
+		}
+		GameState.getInstance().addQuest(newQuest);
+        questLabel++;
 		
+		
+		
+	}
+	
+	private void placeMapMarker(LatLng point){
 		mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude))
-			.title("Quest " + String.valueOf(questLabel)));
-		
+				.title("Quest " + String.valueOf(questLabel)));
+			
 		Bitmap.Config conf = Bitmap.Config.ARGB_8888; 
 		Bitmap bmp = Bitmap.createBitmap(200, 50, conf); 
 		Canvas canvas = new Canvas(bmp);
-		
+			
 		Paint paint = new Paint();
 		paint.setColor(Color.RED);
 		paint.setStyle(Style.FILL);
 		paint.setTextSize(55);
-		
+			
 		//below has debugging code!**/
 		canvas.drawText(String.valueOf(questLabel), Constants.LABEL_X_OFFSET, Constants.LABEL_Y_OFFSET, paint); // paint defines the text color, stroke width, size
-		
+			
 		/**/
-		
-		
+			
+			
 		mMap.addMarker(new MarkerOptions()
 			.position(new LatLng(point.latitude, point.longitude))
 		    //.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2))
@@ -246,23 +271,12 @@ OnCheckedChangeListener{
 		    .anchor(0.5f, 1)
 		    .visible(true)
 		    );
-		
-        
-        
-        
-        if(!GameState.getInstance().isEmpty()){
-        	System.out.println(GameState.getInstance().getTail().getPoint() + " " + point);
-        	//mMap.addPolyline((new PolylineOptions()).add(tempArrList.get(tempArrList.size()-1), point));
-        	mMap.addPolyline((new PolylineOptions()).add(GameState.getInstance().getTail().getPoint(), point));
-        }
-        //tempArrList.add(point);
-        GameState.getInstance().addQuest("title"+String.valueOf(questLabel), point, "script" + String.valueOf(questLabel), "answer"+String.valueOf(questLabel));
-        
-        questLabel++;
-		
-		
+	        
 	}
 	
+	private void drawQuestPath(QuestNode startNode, QuestNode endNode){
+		mMap.addPolyline((new PolylineOptions()).add(startNode.getPoint(), endNode.getPoint()));
+	}
 	
 	@Override
 	public void onMapClick(LatLng point) {
@@ -293,5 +307,12 @@ OnCheckedChangeListener{
 			deleteQuest.setVisibility(View.INVISIBLE);
 			moveQuest.setVisibility(View.INVISIBLE);
 		}
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outBundle){
+		super.onSaveInstanceState(outBundle);
+		
+		
 	}
 }

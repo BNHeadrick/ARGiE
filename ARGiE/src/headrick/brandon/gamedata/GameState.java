@@ -40,6 +40,11 @@ public class GameState {
 		questNodes.add(new QuestNode(title, point, script, answer));
 	}
 	
+	public void addQuest(QuestNode newQuest) {
+		// TODO Auto-generated method stub
+		questNodes.add(newQuest);
+	}
+	
 	public QuestNode getRoot(){
 		return questNodes.getFirst();
 	}
@@ -59,4 +64,5 @@ public class GameState {
 	public void removeAllQuests(){
 		questNodes.clear();
 	}
+	
 }
