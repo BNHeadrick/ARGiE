@@ -11,8 +11,6 @@
     
     <!-- create game screen -->
     <string name="create_game_screen_save_button">Save</string>
-    <string name="create_game_screen_edit_button_on">Edit Quests On</string>
-    <string name="create_game_screen_edit_button_off">Edit Quests Off</string>
     <string name="create_game_screen_clear_button">Clear</string>
     <string name="create_game_screen_game_options_button">Game Options</string>
     <string name="create_game_screen_delete_quest_button">Delete Quest</string>

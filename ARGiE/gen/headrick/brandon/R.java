@@ -176,25 +176,24 @@ containing a value of this type.
     }
     public static final class id {
         public static final int aboutCredits=0x7f050005;
-        public static final int bAbout=0x7f050013;
+        public static final int bAbout=0x7f050012;
         public static final int bClearGame=0x7f050009;
-        public static final int bCreateGame=0x7f050011;
+        public static final int bCreateGame=0x7f050010;
         public static final int bDeleteQuest=0x7f05000b;
-        public static final int bGameOptions=0x7f05000c;
-        public static final int bMoveQuest=0x7f05000d;
-        public static final int bPlayGame=0x7f050010;
+        public static final int bGameOptions=0x7f050008;
+        public static final int bMoveQuest=0x7f05000c;
+        public static final int bPlayGame=0x7f05000f;
         public static final int bSaveGame=0x7f050007;
-        public static final int bSettings=0x7f050012;
+        public static final int bSettings=0x7f050011;
         public static final int hybrid=0x7f050004;
         public static final int legal=0x7f050006;
-        public static final int listview=0x7f05000e;
+        public static final int listview=0x7f05000d;
         public static final int map=0x7f05000a;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
-        public static final int tbEditGame=0x7f050008;
         public static final int terrain=0x7f050003;
-        public static final int tvTitle=0x7f05000f;
+        public static final int tvTitle=0x7f05000e;
     }
     public static final class layout {
         public static final int about_screen=0x7f030000;
@@ -209,7 +208,7 @@ containing a value of this type.
     public static final class string {
         /**  about screen 
          */
-        public static final int about_screen_credits_textbox=0x7f060022;
+        public static final int about_screen_credits_textbox=0x7f060020;
         public static final int app_name=0x7f060015;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
@@ -275,12 +274,10 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f06000e;
-        public static final int create_game_screen_clear_button=0x7f06001e;
-        public static final int create_game_screen_delete_quest_button=0x7f060020;
-        public static final int create_game_screen_edit_button_off=0x7f06001d;
-        public static final int create_game_screen_edit_button_on=0x7f06001c;
-        public static final int create_game_screen_game_options_button=0x7f06001f;
-        public static final int create_game_screen_move_quest_button=0x7f060021;
+        public static final int create_game_screen_clear_button=0x7f06001c;
+        public static final int create_game_screen_delete_quest_button=0x7f06001e;
+        public static final int create_game_screen_game_options_button=0x7f06001d;
+        public static final int create_game_screen_move_quest_button=0x7f06001f;
         /**  create game screen 
          */
         public static final int create_game_screen_save_button=0x7f06001b;
@@ -295,7 +292,7 @@ containing a value of this type.
         public static final int location_client_ulr_inactive_age_under_13=0x7f060012;
         public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
         public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
-        public static final int menu_legalnotices=0x7f060023;
+        public static final int menu_legalnotices=0x7f060021;
         public static final int title_screen_about_button=0x7f06001a;
         public static final int title_screen_create_button=0x7f060018;
         public static final int title_screen_play_button=0x7f060017;

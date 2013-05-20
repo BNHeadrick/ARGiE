@@ -58,12 +58,11 @@ import headrick.brandon.utilities.DBReadWrite;
  */
 public class CreateGameActivity extends FragmentActivity 
 implements OnMapClickListener, OnMapLongClickListener, 
-OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener, 
-OnCheckedChangeListener{
+OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener 
+{
 	private char questLabel = Constants.INITIAL_LABEL_VAL; //temporariry just for debugging; remove later.
 	private GoogleMap mMap;
 	Button saveGame, clearGame, deleteQuest, moveQuest, gameOptions;
-	ToggleButton editGame;
 	DBReadWrite dbReadWrite;
 	AlertDialog.Builder alert;
 	AlertDialog alertDialog;
@@ -138,7 +137,6 @@ OnCheckedChangeListener{
 		// TODO Auto-generated method stub
 		saveGame = (Button) findViewById(R.id.bSaveGame);
 		clearGame = (Button) findViewById(R.id.bClearGame);
-		editGame = (ToggleButton) findViewById(R.id.tbEditGame);
 		deleteQuest = (Button) findViewById(R.id.bDeleteQuest);
 		moveQuest = (Button) findViewById(R.id.bMoveQuest);
 		gameOptions = (Button) findViewById(R.id.bGameOptions);
@@ -146,7 +144,6 @@ OnCheckedChangeListener{
 		
 		saveGame.setOnClickListener(this);
 		clearGame.setOnClickListener(this);
-		editGame.setOnCheckedChangeListener(this);
 	}
     
 	public void onClick(View v) {
@@ -261,9 +258,6 @@ OnCheckedChangeListener{
 		//below has debugging code!**/
 		canvas.drawText(String.valueOf(questLabel), Constants.LABEL_X_OFFSET, Constants.LABEL_Y_OFFSET, paint); // paint defines the text color, stroke width, size
 			
-		/**/
-			
-			
 		mMap.addMarker(new MarkerOptions()
 			.position(new LatLng(point.latitude, point.longitude))
 		    //.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2))
@@ -287,26 +281,7 @@ OnCheckedChangeListener{
 	@Override
 	public void onInfoWindowClick(Marker marker) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	//if the user clicks the edit button, change the viewable buttons on the bottom button bar to
-	//reflect the changed context
-	@Override
-	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		// TODO Auto-generated method stub
-		if(!isChecked)
-		{
-			gameOptions.setVisibility(View.INVISIBLE);
-			deleteQuest.setVisibility(View.VISIBLE);
-			moveQuest.setVisibility(View.VISIBLE);
-			
-		}
-		else{
-			gameOptions.setVisibility(View.VISIBLE);
-			deleteQuest.setVisibility(View.INVISIBLE);
-			moveQuest.setVisibility(View.INVISIBLE);
-		}
+		//marker.remove();
 	}
 	
 	@Override
