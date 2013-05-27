@@ -28,7 +28,7 @@ public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMap
     private GoogleMap mMap;
     private char questLabel = Constants.INITIAL_LABEL_VAL; //temporariry just for debugging; remove later.
     final int RQS_GooglePlayServices = 1;
-    private QuestNode currentQuest, nextQuest;
+    private QuestNode nextTargetQuest;
     private LocationManager locationManager;
     private OnLocationChangedListener onLocationChangedListener;
     Criteria criteria;
@@ -105,19 +105,9 @@ public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMap
         settingsState = GameSettingsState.getInstance();
         mapHelper = MapHelper.getInstance();
 
-        currentQuest = gameState.getRoot();
-
-        //since java's linkedList isn't a real linked list, this is hacky way to get the second element of it
-        if(gameState.getQuestNodes().size() > 1){
-            nextQuest = gameState.getQuestNodes().get(1);
+        if(!gameState.isEmpty()){
+            nextTargetQuest = gameState.getRoot();
         }
-
-        // Acquire a reference to the system Location Manager
-//        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-        // Register the listener with the Location Manager to receive location updates
-//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
     }
 
     private void drawQuestPath(QuestNode startNode, QuestNode endNode){
@@ -183,16 +173,19 @@ public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMap
     private boolean isAtNextValidLocation(){
 
         float[] distance = new float[2];
-        Location.distanceBetween( mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude(),
-                nextQuest.getPoint().latitude, nextQuest.getPoint().longitude, distance);
+        //below is debug placeholder code; change when refactor of how quests are managed during gameplay
+        if(!gameState.isEmpty()){
+            Location.distanceBetween( mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude(),
+                    nextTargetQuest.getPoint().latitude, nextTargetQuest.getPoint().longitude, distance);
 
-        if( distance[0] < nextQuest.getRadialThreshold()  ){
-            Toast.makeText(getBaseContext(), "Inside " + distance[0] + " " + distance[1], Toast.LENGTH_LONG).show();
-            //currentQuest = nextQuest;
-            //here a REAL linkedlist implementation needs to exist.
-            return true;
-        } else {
-            //Toast.makeText(getBaseContext(), "Outside " + distance[0] + " " + distance[1], Toast.LENGTH_LONG).show();
+            if( distance[0] < nextTargetQuest.getRadialThreshold()  ){
+                Toast.makeText(getBaseContext(), "Inside " + distance[0] + " " + distance[1], Toast.LENGTH_LONG).show();
+                //currentQuest = nextQuest;
+                //here a REAL linkedlist implementation needs to exist.
+                return true;
+            } else {
+                //Toast.makeText(getBaseContext(), "Outside " + distance[0] + " " + distance[1], Toast.LENGTH_LONG).show();
+            }
         }
         return false;
     }

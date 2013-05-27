@@ -35,12 +35,12 @@ public class MapHelper {
     public void placeMapMarker(GoogleMap mMap, QuestNode questNode, char questLabel){
         LatLng point = questNode.getPoint();
 
-        int alphaBlue = Color.argb(100, 0, 0, 255);
+        int alphaLightBlue = Color.argb(70, 173, 216, 230);
 
         //place a circle in the center of the area in which the quest is to be placed; represents threshold radius.
         CircleOptions circleOptions = new CircleOptions()
                 .center(questNode.getPoint())
-                .fillColor(alphaBlue)
+                .fillColor(alphaLightBlue)
                 .strokeWidth(1)
                 .radius(questNode.getRadialThreshold()); // In meters
 
