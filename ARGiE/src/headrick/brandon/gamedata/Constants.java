@@ -21,6 +21,6 @@ public final class Constants {
 	public static final char INITIAL_LABEL_VAL = 'A';
 
     //Default threshold for GPS coordinates
-    public static final double DEFAULT_RAD_METERS = 10.0;
+    public static final double DEFAULT_RAD_METERS = 100.0;
 
 }

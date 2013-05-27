@@ -18,7 +18,7 @@
 
     <!-- game options screen -->
     <string name="game_options_screen_save_button">Save</string>
-    <string name="game_options_screen_cancel_button">Clear</string>
+    <string name="game_options_screen_cancel_button">Cancel</string>
 
     <!-- about screen -->
     <string name="about_screen_credits_textbox">ARGiE by Brandon Headrick\n\nBased on RadVenture by Brandon Headrick, Mikhail Jacob, and Jeff Bernard\n</string>

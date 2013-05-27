@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/editText" android:layout_gravity="left|center_vertical" android:editable="true"/>
+            android:id="@+id/etRadius" android:layout_gravity="left|center_vertical" android:editable="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

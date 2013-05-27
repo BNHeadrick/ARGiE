@@ -1,24 +1,20 @@
 package headrick.brandon.controller;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
+import android.location.*;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
+import android.widget.Toast;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
 import headrick.brandon.R;
 import headrick.brandon.gamedata.Constants;
+import headrick.brandon.gamedata.GameSettingsState;
 import headrick.brandon.gamedata.GameState;
 import headrick.brandon.model.QuestNode;
+import headrick.brandon.utilities.MapHelper;
 
 /**
  * Created by Brandon Headrick on 5/26/13.
@@ -26,20 +22,32 @@ import headrick.brandon.model.QuestNode;
  * Ideally, will eventually be a generic class that takes in the game previously selected by the user (taking in
  * data from the database) and sets up the GameState and Map in order for this class to manage the rest of the game.
  */
-public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnCameraChangeListener, GoogleMap.OnInfoWindowClickListener {
+public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMapClickListener,
+        GoogleMap.OnMapLongClickListener, GoogleMap.OnCameraChangeListener,
+        GoogleMap.OnInfoWindowClickListener, LocationListener, LocationSource{
     private GoogleMap mMap;
     private char questLabel = Constants.INITIAL_LABEL_VAL; //temporariry just for debugging; remove later.
+    final int RQS_GooglePlayServices = 1;
+    private QuestNode currentQuest, nextQuest;
+    private LocationManager locationManager;
+    private OnLocationChangedListener onLocationChangedListener;
+    Criteria criteria;
+
+    GameState gameState;
+    GameSettingsState settingsState;
+    MapHelper mapHelper;
 
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.run_game_screen);
-        //initializeVars();
+        initializeVars();
         setupMapIfNeeded();
 
         mMap.setMyLocationEnabled(true);
-        Criteria criteria = new Criteria();
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         String provider = locationManager.getBestProvider(criteria, false);
         Location location = locationManager.getLastKnownLocation(provider);
         LatLng userLoc = new LatLng(location.getLatitude(), location.getLongitude());
@@ -47,11 +55,11 @@ public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMap
         setupStartLocation(userLoc);
 
         //rebuild the map for configuration changes
-        if(!GameState.getInstance().isEmpty()){
+        if(!gameState.isEmpty()){
             QuestNode prevQuest = null;
-            for(QuestNode aQuest : GameState.getInstance().getQuestNodes()){
-                placeMapMarker(aQuest);
-                if(aQuest != GameState.getInstance().getRoot()){
+            for(QuestNode aQuest : gameState.getQuestNodes()){
+                mapHelper.placeMapMarker(mMap, aQuest, questLabel);
+                if(aQuest != gameState.getRoot()){
                     drawQuestPath(prevQuest, aQuest);
                 }
                 questLabel++;
@@ -93,41 +101,23 @@ public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMap
     }
 
     private void initializeVars() {
+        gameState = GameState.getInstance();
+        settingsState = GameSettingsState.getInstance();
+        mapHelper = MapHelper.getInstance();
 
-    }
+        currentQuest = gameState.getRoot();
 
-    /**
-     * places the marker and sets the marker reference for the
-     */
-    private void placeMapMarker(QuestNode questNode){
-        LatLng point = questNode.getPoint();
+        //since java's linkedList isn't a real linked list, this is hacky way to get the second element of it
+        if(gameState.getQuestNodes().size() > 1){
+            nextQuest = gameState.getQuestNodes().get(1);
+        }
 
-        Marker newMark = mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude))
-                .title("Quest " + String.valueOf(questLabel))
-                .snippet(questNode.getTitle()));
+        // Acquire a reference to the system Location Manager
+//        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-        questNode.setMapMarker(newMark);
-
-        Bitmap.Config conf = Bitmap.Config.ARGB_8888;
-        Bitmap bmp = Bitmap.createBitmap(200, 50, conf);
-        Canvas canvas = new Canvas(bmp);
-
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setTextSize(55);
-
-        //below has debugging code!**/
-        canvas.drawText(String.valueOf(questLabel), Constants.LABEL_X_OFFSET, Constants.LABEL_Y_OFFSET, paint); // paint defines the text color, stroke width, size
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(point.latitude, point.longitude))
-                        //.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2))
-                .icon(BitmapDescriptorFactory.fromBitmap(bmp))
-                .anchor(0.5f, 1)
-                .visible(true)
-        );
-
+        // Register the listener with the Location Manager to receive location updates
+//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
     }
 
     private void drawQuestPath(QuestNode startNode, QuestNode endNode){
@@ -151,6 +141,97 @@ public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMap
 
     @Override
     public void onInfoWindowClick(Marker marker) {
+
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        mMap.setLocationSource(null);
+        locationManager.removeUpdates(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+
+        if (resultCode == ConnectionResult.SUCCESS){
+            Toast.makeText(getApplicationContext(),
+                    "isGooglePlayServicesAvailable SUCCESS",
+                    Toast.LENGTH_LONG).show();
+
+            //Register for location updates using a Criteria, and a callback on the specified looper thread.
+            locationManager.requestLocationUpdates(
+                    0L,    //minTime
+                    0.0f,    //minDistance
+                    criteria,  //criteria
+                    this,    //listener
+                    null);   //looper
+
+            //Replaces the location source of the my-location layer.
+            mMap.setLocationSource(this);
+
+        }else{
+            GooglePlayServicesUtil.getErrorDialog(resultCode, this, RQS_GooglePlayServices);
+        }
+
+    }
+
+
+    private boolean isAtNextValidLocation(){
+
+        float[] distance = new float[2];
+        Location.distanceBetween( mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude(),
+                nextQuest.getPoint().latitude, nextQuest.getPoint().longitude, distance);
+
+        if( distance[0] < nextQuest.getRadialThreshold()  ){
+            Toast.makeText(getBaseContext(), "Inside " + distance[0] + " " + distance[1], Toast.LENGTH_LONG).show();
+            //currentQuest = nextQuest;
+            //here a REAL linkedlist implementation needs to exist.
+            return true;
+        } else {
+            //Toast.makeText(getBaseContext(), "Outside " + distance[0] + " " + distance[1], Toast.LENGTH_LONG).show();
+        }
+        return false;
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        if (onLocationChangedListener != null) {
+            onLocationChangedListener.onLocationChanged(location);
+            isAtNextValidLocation();
+        }
+    }
+
+    @Override
+    public void onProviderDisabled(String arg0) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void onProviderEnabled(String arg0) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void activate(OnLocationChangedListener onLocationChangedListener) {
+        this.onLocationChangedListener = onLocationChangedListener;
+    }
+
+    @Override
+    public void deactivate() {
+
+        this.onLocationChangedListener = null;
 
     }
 }

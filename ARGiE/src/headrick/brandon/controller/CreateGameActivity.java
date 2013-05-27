@@ -22,21 +22,18 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 
 import android.os.Bundle;
 
+import headrick.brandon.gamedata.GameSettingsState;
 import headrick.brandon.gamedata.GameState;
 import headrick.brandon.gamedata.Constants;
 import headrick.brandon.model.QuestNode;
 import headrick.brandon.utilities.DBReadWrite;
+import headrick.brandon.utilities.MapHelper;
 
 /**
  * The main view for game creation.  Provides the tools for CRUD of a game's
@@ -49,12 +46,16 @@ implements OnMapClickListener, OnMapLongClickListener,
 OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener,
 OnMarkerClickListener
 {
-	private char questLabel = Constants.INITIAL_LABEL_VAL; //temporariry just for debugging; remove later.
+	private char questLabel = Constants.INITIAL_LABEL_VAL; //temporarily just for debugging; remove later.
 	private GoogleMap mMap;
 	Button saveGame, clearGame, deleteQuest, moveQuest, gameOptions;
 	DBReadWrite dbReadWrite;
 	AlertDialog.Builder alert;
 	AlertDialog alertDialog;
+
+    GameState gameState;
+    GameSettingsState settingsState;
+    MapHelper mapHelper;
 	//private ArrayList<LatLng> tempArrList = new ArrayList<LatLng>();
 	
 	@Override
@@ -79,8 +80,8 @@ OnMarkerClickListener
 	    //rebuild the map for configuration changes
 	    if(!GameState.getInstance().isEmpty()){
 	    	QuestNode prevQuest = null;
-	    	for(QuestNode aQuest : GameState.getInstance().getQuestNodes()){
-	    		placeMapMarker(aQuest);
+	    	for(QuestNode aQuest : gameState.getQuestNodes()){
+                MapHelper.getInstance().placeMapMarker(mMap, aQuest, questLabel);
 	    		if(aQuest != GameState.getInstance().getRoot()){
 	    			drawQuestPath(prevQuest, aQuest);
 	    		}
@@ -129,86 +130,88 @@ OnMarkerClickListener
 		deleteQuest = (Button) findViewById(R.id.bDeleteQuest);
 		moveQuest = (Button) findViewById(R.id.bMoveQuest);
 		gameOptions = (Button) findViewById(R.id.bGameOptions);
-		
-		
+
 		saveGame.setOnClickListener(this);
         gameOptions.setOnClickListener(this);
 		clearGame.setOnClickListener(this);
+
+        gameState = GameState.getInstance();
+        settingsState = GameSettingsState.getInstance();
+        mapHelper = MapHelper.getInstance();
 	}
     
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-//		Intent intent;
 		switch (v.getId()){
-		case R.id.bSaveGame:
-			Log.w("myApp", "bSaveGame");
-			
-			alert = new AlertDialog.Builder(this);
-            alert.setTitle("Save The Game Map");
-            alert.setMessage("Are you sure you want to save the current game map?");
- 
-            alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-            	dbReadWrite.writeQuestData();
-    			Toast.makeText(getApplicationContext(), 
-                        "Quest Saved! (SORT OF!)", Toast.LENGTH_LONG).show();
-              }
-            });
- 
-            alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialog, int whichButton) {
-                // Canceled.
-                  dialog.cancel();
-              }
-            });
-            alertDialog = alert.create();
-            alertDialog.show();
-			
-			
-			break;
-		
-			
-		case R.id.bClearGame:
-			alert = new AlertDialog.Builder(this);
-            alert.setTitle("Clear The Game Map");
-            alert.setMessage("Are you sure you want to clear the game of all quests?");
- 
-            alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-            	questLabel = Constants.INITIAL_LABEL_VAL;
-    			GameState.getInstance().removeAllQuests();
-    			mMap.clear();
-    			Toast.makeText(getApplicationContext(), 
-                        "Game Map Cleared!", Toast.LENGTH_LONG).show();
-              }
-            });
- 
-            alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialog, int whichButton) {
-                // Canceled.
-                  dialog.cancel();
-              }
-            });
-            alertDialog = alert.create();
-            alertDialog.show();
+            case R.id.bSaveGame:
+                Log.w("myApp", "bSaveGame");
 
-			
-			break;
-			
-		case R.id.bDeleteQuest:
-			
-			
-			break;
-		case R.id.bMoveQuest:
-			
-			
-			break;
-		case R.id.bGameOptions:
-            Intent intent;
-            intent = new Intent(CreateGameActivity.this, GameOptionsActivity.class);
-            startActivity(intent);
-			
-			break;
+                alert = new AlertDialog.Builder(this);
+                alert.setTitle("Save The Game Map");
+                alert.setMessage("Are you sure you want to save the current game map?");
+
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dbReadWrite.writeQuestData();
+                    Toast.makeText(getApplicationContext(),
+                            "Quest Saved! (SORT OF!)", Toast.LENGTH_LONG).show();
+                  }
+                });
+
+                alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                  public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+                      dialog.cancel();
+                  }
+                });
+                alertDialog = alert.create();
+                alertDialog.show();
+
+
+                break;
+
+
+            case R.id.bClearGame:
+                alert = new AlertDialog.Builder(this);
+                alert.setTitle("Clear The Game Map");
+                alert.setMessage("Are you sure you want to clear the game of all quests?");
+
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    questLabel = Constants.INITIAL_LABEL_VAL;
+                    gameState.removeAllQuests();
+                    mMap.clear();
+                    Toast.makeText(getApplicationContext(),
+                            "Game Map Cleared!", Toast.LENGTH_LONG).show();
+                  }
+                });
+
+                alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                  public void onClick(DialogInterface dialog, int whichButton) {
+                    // Canceled.
+                      dialog.cancel();
+                  }
+                });
+                alertDialog = alert.create();
+                alertDialog.show();
+
+
+                break;
+
+            case R.id.bDeleteQuest:
+
+
+                break;
+            case R.id.bMoveQuest:
+
+
+                break;
+            case R.id.bGameOptions:
+                Intent intent;
+                intent = new Intent(CreateGameActivity.this, GameOptionsActivity.class);
+                startActivity(intent);
+
+                break;
 		}
 		
 		
@@ -224,59 +227,14 @@ OnMarkerClickListener
 		//the following draws a new label and path for the user and adds the new quest to the GameState object
 		QuestNode newQuest = new QuestNode("title"+String.valueOf(questLabel), point,
                 "script" + String.valueOf(questLabel), "answer"+String.valueOf(questLabel),
-                Constants.DEFAULT_RAD_METERS);
-		placeMapMarker(newQuest);
-		if(!GameState.getInstance().isEmpty()){
-			drawQuestPath(GameState.getInstance().getTail(), newQuest);
+                settingsState.getGlobalRadiusThreshold());
+		mapHelper.placeMapMarker(mMap, newQuest, questLabel);
+		if(!gameState.isEmpty()){
+			drawQuestPath(gameState.getTail(), newQuest);
 		}
-		GameState.getInstance().addQuest(newQuest);
+		gameState.addQuest(newQuest);
         questLabel++;
 
-	}
-	/**
-	 * places the marker and sets the marker reference for the 
-	 */
-	private void placeMapMarker(QuestNode questNode){
-		LatLng point = questNode.getPoint();
-
-        //place a circle in the center of the area in which the quest is to be placed; represents threshold radius.
-        CircleOptions circleOptions = new CircleOptions()
-                .center(questNode.getPoint())
-                .fillColor(Color.BLUE)
-                .strokeWidth(1)
-                .radius(questNode.getRadialThreshold()); // In meters
-
-        // Get back the mutable Circle
-        mMap.addCircle(circleOptions);
-
-        //place the marker for the quest on the map.
-		Marker newMark = mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude))
-				.title("Quest " + String.valueOf(questLabel))
-				.snippet("Click this to change this quest's properties!"));
-		
-		questNode.setMapMarker(newMark);
-			
-		Bitmap.Config conf = Bitmap.Config.ARGB_8888; 
-		Bitmap bmp = Bitmap.createBitmap(200, 50, conf); 
-		Canvas canvas = new Canvas(bmp);
-			
-		Paint paint = new Paint();
-		paint.setColor(Color.RED);
-		paint.setStyle(Style.FILL);
-		paint.setTextSize(55);
-			
-		//below has debugging code!**/
-		canvas.drawText(String.valueOf(questLabel), Constants.LABEL_X_OFFSET, Constants.LABEL_Y_OFFSET, paint); // paint defines the text color, stroke width, size
-
-        //place a new mark on the map close to the previously added marker which displays the debug label
-		mMap.addMarker(new MarkerOptions()
-			.position(new LatLng(point.latitude, point.longitude))
-		    //.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2))
-		    .icon(BitmapDescriptorFactory.fromBitmap(bmp))
-		    .anchor(0.5f, 1)
-		    .visible(true)
-		    );
-	        
 	}
 	
 	private void drawQuestPath(QuestNode startNode, QuestNode endNode){
@@ -293,7 +251,7 @@ OnMarkerClickListener
 	public void onInfoWindowClick(Marker marker) {
 		// TODO Auto-generated method stub
 		//marker.remove();
-		for(QuestNode aQuest : GameState.getInstance().getQuestNodes()){
+		for(QuestNode aQuest : gameState.getQuestNodes()){
 			if(aQuest.getMapMarker().equals(marker)){
 				Intent intent = new Intent(CreateGameActivity.this, EditQuestActivity.class);
 				startActivity(intent);
