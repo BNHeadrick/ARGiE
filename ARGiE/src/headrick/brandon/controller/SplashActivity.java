@@ -32,8 +32,8 @@ public class SplashActivity extends Activity {
 					ie.printStackTrace();
 				} 
 				
-				Intent ourIntent = new Intent(SplashActivity.this, TitleScreenActivity.class);
-                startActivity(ourIntent);
+				Intent intent = new Intent(SplashActivity.this, TitleScreenActivity.class);
+                startActivity(intent);
 			}
 		};
 		timer.start();

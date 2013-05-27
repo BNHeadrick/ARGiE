@@ -1,35 +1,41 @@
 package headrick.brandon.model;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 
 /**
- * Basic data structure that holds individual quest data.
+ * Quest Object that holds individual quest data.
  * @author Brandon Headrick
  *
  */
 public class QuestNode {
-	private String title, script, answer;
+	private String title = null, script = null, answer = null;
 	private LatLng point;
 	private int id;	//only used for database
+    private double radialThreshold;
+	private Marker mapMarker;
 	
 	public QuestNode(){
 		
 	}
-	
-	public QuestNode(String title, LatLng point, String script, String answer){
+
+    //constructor used when creating objects outside of database influence
+	public QuestNode(String title, LatLng point, String script, String answer, double radialThreshold){
 		this.title = title;
 		this.point = point;
 		this.script = script;
 		this.answer = answer;
-	}
+        this.radialThreshold = radialThreshold;
+    }
 	
-	//constructor to be used when pulling from a database
-	public QuestNode(int id, String title, LatLng point, String script, String answer){
+	//constructor to be used when creating objects from a database
+	public QuestNode(int id, String title, LatLng point, String script, String answer, double radialThreshold){
 		this.id = id;
 		this.title = title;
 		this.point = point;
 		this.script = script;
 		this.answer = answer;
+        this.radialThreshold = radialThreshold;
 	}
 
 	public String getTitle() {
@@ -79,6 +85,20 @@ public class QuestNode {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
+
+	public Marker getMapMarker() {
+		return mapMarker;
+	}
+
+	public void setMapMarker(Marker mapMarker) {
+		this.mapMarker = mapMarker;
+	}
+
+    public void setRadialThreshold(double radialThreshold) {
+        this.radialThreshold = radialThreshold;
+    }
+
+    public double getRadialThreshold() {
+        return radialThreshold;
+    }
 }

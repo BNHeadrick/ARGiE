@@ -73,12 +73,13 @@ int id terrain 0x7f050003
 int id tvTitle 0x7f05000e
 int layout about_screen 0x7f030000
 int layout create_game_screen 0x7f030001
-int layout create_quest_screen 0x7f030002
+int layout edit_quest_screen 0x7f030002
 int layout game_chooser_screen 0x7f030003
 int layout linear_test 0x7f030004
-int layout settings_screen 0x7f030005
-int layout splash_screen 0x7f030006
-int layout title_screen 0x7f030007
+int layout run_game_screen 0x7f030005
+int layout settings_screen 0x7f030006
+int layout splash_screen 0x7f030007
+int layout title_screen 0x7f030008
 int string about_screen_credits_textbox 0x7f060020
 int string app_name 0x7f060015
 int string auth_client_availability_notification_title 0x7f06000f

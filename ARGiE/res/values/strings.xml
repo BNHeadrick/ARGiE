@@ -15,7 +15,11 @@
     <string name="create_game_screen_game_options_button">Game Options</string>
     <string name="create_game_screen_delete_quest_button">Delete Quest</string>
     <string name="create_game_screen_move_quest_button">Move Quest</string>
-    
+
+    <!-- game options screen -->
+    <string name="game_options_screen_save_button">Save</string>
+    <string name="game_options_screen_cancel_button">Clear</string>
+
     <!-- about screen -->
     <string name="about_screen_credits_textbox">ARGiE by Brandon Headrick\n\nBased on RadVenture by Brandon Headrick, Mikhail Jacob, and Jeff Bernard\n</string>
     <string name="menu_legalnotices">Legal Notices</string>

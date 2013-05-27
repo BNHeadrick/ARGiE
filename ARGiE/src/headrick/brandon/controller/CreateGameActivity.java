@@ -1,34 +1,22 @@
 package headrick.brandon.controller;
 
-//import java.util.ArrayList;
-
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.*;
 
 import headrick.brandon.R;
-//import android.app.Activity;
-//import android.content.Intent;
-//import android.content.res.AssetManager;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -58,7 +46,8 @@ import headrick.brandon.utilities.DBReadWrite;
  */
 public class CreateGameActivity extends FragmentActivity 
 implements OnMapClickListener, OnMapLongClickListener, 
-OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener 
+OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener,
+OnMarkerClickListener
 {
 	private char questLabel = Constants.INITIAL_LABEL_VAL; //temporariry just for debugging; remove later.
 	private GoogleMap mMap;
@@ -91,7 +80,7 @@ OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener
 	    if(!GameState.getInstance().isEmpty()){
 	    	QuestNode prevQuest = null;
 	    	for(QuestNode aQuest : GameState.getInstance().getQuestNodes()){
-	    		placeMapMarker(aQuest.getPoint());
+	    		placeMapMarker(aQuest);
 	    		if(aQuest != GameState.getInstance().getRoot()){
 	    			drawQuestPath(prevQuest, aQuest);
 	    		}
@@ -143,6 +132,7 @@ OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener
 		
 		
 		saveGame.setOnClickListener(this);
+        gameOptions.setOnClickListener(this);
 		clearGame.setOnClickListener(this);
 	}
     
@@ -161,7 +151,7 @@ OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener
             public void onClick(DialogInterface dialog, int whichButton) {
             	dbReadWrite.writeQuestData();
     			Toast.makeText(getApplicationContext(), 
-                        "Quest Saved!", Toast.LENGTH_LONG).show();
+                        "Quest Saved! (SORT OF!)", Toast.LENGTH_LONG).show();
               }
             });
  
@@ -214,7 +204,9 @@ OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener
 			
 			break;
 		case R.id.bGameOptions:
-			
+            Intent intent;
+            intent = new Intent(CreateGameActivity.this, GameOptionsActivity.class);
+            startActivity(intent);
 			
 			break;
 		}
@@ -230,21 +222,39 @@ OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener
 	@Override
 	public void onMapLongClick(LatLng point) {
 		//the following draws a new label and path for the user and adds the new quest to the GameState object
-		placeMapMarker(point);
-		QuestNode newQuest = new QuestNode("title"+String.valueOf(questLabel), point, "script" + String.valueOf(questLabel), "answer"+String.valueOf(questLabel));
+		QuestNode newQuest = new QuestNode("title"+String.valueOf(questLabel), point,
+                "script" + String.valueOf(questLabel), "answer"+String.valueOf(questLabel),
+                Constants.DEFAULT_RAD_METERS);
+		placeMapMarker(newQuest);
 		if(!GameState.getInstance().isEmpty()){
 			drawQuestPath(GameState.getInstance().getTail(), newQuest);
 		}
 		GameState.getInstance().addQuest(newQuest);
         questLabel++;
-		
-		
-		
+
 	}
-	
-	private void placeMapMarker(LatLng point){
-		mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude))
-				.title("Quest " + String.valueOf(questLabel)));
+	/**
+	 * places the marker and sets the marker reference for the 
+	 */
+	private void placeMapMarker(QuestNode questNode){
+		LatLng point = questNode.getPoint();
+
+        //place a circle in the center of the area in which the quest is to be placed; represents threshold radius.
+        CircleOptions circleOptions = new CircleOptions()
+                .center(questNode.getPoint())
+                .fillColor(Color.BLUE)
+                .strokeWidth(1)
+                .radius(questNode.getRadialThreshold()); // In meters
+
+        // Get back the mutable Circle
+        mMap.addCircle(circleOptions);
+
+        //place the marker for the quest on the map.
+		Marker newMark = mMap.addMarker(new MarkerOptions().position(new LatLng(point.latitude, point.longitude))
+				.title("Quest " + String.valueOf(questLabel))
+				.snippet("Click this to change this quest's properties!"));
+		
+		questNode.setMapMarker(newMark);
 			
 		Bitmap.Config conf = Bitmap.Config.ARGB_8888; 
 		Bitmap bmp = Bitmap.createBitmap(200, 50, conf); 
@@ -257,7 +267,8 @@ OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener
 			
 		//below has debugging code!**/
 		canvas.drawText(String.valueOf(questLabel), Constants.LABEL_X_OFFSET, Constants.LABEL_Y_OFFSET, paint); // paint defines the text color, stroke width, size
-			
+
+        //place a new mark on the map close to the previously added marker which displays the debug label
 		mMap.addMarker(new MarkerOptions()
 			.position(new LatLng(point.latitude, point.longitude))
 		    //.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2))
@@ -282,6 +293,12 @@ OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener
 	public void onInfoWindowClick(Marker marker) {
 		// TODO Auto-generated method stub
 		//marker.remove();
+		for(QuestNode aQuest : GameState.getInstance().getQuestNodes()){
+			if(aQuest.getMapMarker().equals(marker)){
+				Intent intent = new Intent(CreateGameActivity.this, EditQuestActivity.class);
+				startActivity(intent);
+			}
+		}
 	}
 	
 	@Override
@@ -290,4 +307,12 @@ OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener
 		
 		
 	}
+
+	@Override
+	public boolean onMarkerClick(Marker arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 }

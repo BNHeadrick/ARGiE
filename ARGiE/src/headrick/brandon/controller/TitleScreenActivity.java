@@ -24,8 +24,6 @@ public class TitleScreenActivity extends Activity implements View.OnClickListene
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		@SuppressWarnings("unused")
-		TextView tv = new TextView(this);
 		setContentView(R.layout.title_screen);
 		initializeVars();
 
@@ -50,22 +48,31 @@ public class TitleScreenActivity extends Activity implements View.OnClickListene
 		Intent intent;
 		switch (v.getId()){
 		case R.id.bPlayGame:
-			Log.w("myApp", "newgame");
+            /*
 			intent = new Intent(TitleScreenActivity.this, GameChooserActivity.class);
 			startActivity(intent);
+			*/
+
+            intent = new Intent(TitleScreenActivity.this, RunGameActivity.class);
+            startActivity(intent);
+
 			break;
 		case R.id.bCreateGame:
-			Log.w("myApp", "creategame");
 			intent = new Intent(TitleScreenActivity.this, CreateGameActivity.class);
 			startActivity(intent);
 			break;
 		case R.id.bSettings:
-			Log.w("myApp", "settings");
+			/* testing below
 			intent = new Intent(TitleScreenActivity.this, SettingsActivity.class);
 			startActivity(intent);
+			*/
+
+			intent = new Intent(TitleScreenActivity.this, EditQuestActivity.class);
+			startActivity(intent);
+
+
 			break;
 		case R.id.bAbout:
-			Log.w("myApp", "about");
 			intent = new Intent(TitleScreenActivity.this, AboutScreenActivity.class);
 			startActivity(intent);
 		}

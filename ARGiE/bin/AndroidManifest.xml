@@ -53,6 +53,9 @@
 		<activity android:name="headrick.brandon.controller.CreateGameActivity" android:label="Create Your New Game" android:launchMode="singleTask">
 		</activity>
 		
+		<activity android:name="headrick.brandon.controller.EditQuestActivity" android:label="Edit Your Quest" android:launchMode="singleTask">
+		</activity>
+		
 		<activity android:name="headrick.brandon.controller.GameChooserActivity" android:label="Choose the game to play" android:launchMode="singleTask">
 		</activity>
         

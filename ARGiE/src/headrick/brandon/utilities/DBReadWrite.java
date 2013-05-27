@@ -20,7 +20,7 @@ public class DBReadWrite{
 		db.clearTable();
 		
 		for(QuestNode node : GameState.getInstance().getQuestNodes()){
-			db.addQuestNode(new QuestNode(node.getTitle(), node.getPoint(), node.getScript(), node.getAnswer()));
+			db.addQuestNode(new QuestNode(node.getTitle(), node.getPoint(), node.getScript(), node.getAnswer(), node.getRadialThreshold()));
 		}
         // Inserting quests
         Log.d("Insert: ", "Inserting .."); 

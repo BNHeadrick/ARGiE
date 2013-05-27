@@ -38,14 +38,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String QUEST_KEY_SCRIPT = "script";
     private static final String QUEST_KEY_ANSWER = "answer";
     private static final String QUEST_KEY_LAT = "latitude";
-    private static final String QUEST_KEY_LONG = "longitude";
+    private static final String QUEST_KEY_LONGITUDE = "longitude";
+    private static final String QUEST_KEY_RAD_THRESH = "radThreshold";
     
     //QuestNodes table schema
     private static final String QUEST_SCHEMA = "CREATE TABLE " + TABLE_QUESTS + "("
             + QUEST_KEY_ID + " INTEGER PRIMARY KEY," + QUEST_KEY_TITLE + " TEXT,"
             + QUEST_KEY_SCRIPT + " TEXT," + QUEST_KEY_ANSWER + " TEXT,"
-            + QUEST_KEY_LAT + " REAL," + QUEST_KEY_LONG + " REAL"
-            + ")";
+            + QUEST_KEY_LAT + " REAL," + QUEST_KEY_LONGITUDE + " REAL"
+            + QUEST_KEY_RAD_THRESH + " REAL,"  + ")";
     
     //Games table schema
     //todo
@@ -86,7 +87,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(QUEST_KEY_SCRIPT, quest.getScript()); 
         values.put(QUEST_KEY_ANSWER, quest.getAnswer()); 
         values.put(QUEST_KEY_LAT, quest.getLatitude());
-        values.put(QUEST_KEY_LONG, quest.getLongitude());
+        values.put(QUEST_KEY_LONGITUDE, quest.getLongitude());
+        values.put(QUEST_KEY_RAD_THRESH, quest.getRadialThreshold());
      
         // Inserting Row
         db.insert(TABLE_QUESTS, null, values);
@@ -103,8 +105,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
      
         Cursor cursor = db.query(TABLE_QUESTS, new String[] { QUEST_KEY_ID,
-        		QUEST_KEY_TITLE, QUEST_KEY_SCRIPT, QUEST_KEY_ANSWER, QUEST_KEY_LAT, QUEST_KEY_LONG }, QUEST_KEY_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
+        	QUEST_KEY_TITLE, QUEST_KEY_SCRIPT, QUEST_KEY_ANSWER, QUEST_KEY_LAT, QUEST_KEY_LONGITUDE,
+            QUEST_KEY_RAD_THRESH}, QUEST_KEY_ID + "=?",
+            new String[] { String.valueOf(id) }, null, null, null, null);
+
         if (cursor != null)
             cursor.moveToFirst();
      
@@ -114,7 +118,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         
         QuestNode quest = new QuestNode(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), point, cursor.getString(3),
-                cursor.getString(4));
+                cursor.getString(4), cursor.getDouble(6));
         // return quest
         return quest;
     }
@@ -143,6 +147,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 LatLng point = new LatLng(Double.parseDouble(cursor.getString(4)), 
                 		Double.parseDouble(cursor.getString(5)));
                 quest.setPoint(point);
+
+                quest.setRadialThreshold(cursor.getDouble(6));
                 // Adding quest to list
                 questList.add(quest);
             } while (cursor.moveToNext());
@@ -176,7 +182,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(QUEST_KEY_SCRIPT, quest.getScript());
         values.put(QUEST_KEY_ANSWER, quest.getAnswer()); 
         values.put(QUEST_KEY_LAT, quest.getLatitude());
-        values.put(QUEST_KEY_LONG, quest.getLongitude());
+        values.put(QUEST_KEY_LONGITUDE, quest.getLongitude());
+        values.put(QUEST_KEY_RAD_THRESH, quest.getRadialThreshold());
      
         // updating row
         return db.update(TABLE_QUESTS, values, QUEST_KEY_ID + " = ?",

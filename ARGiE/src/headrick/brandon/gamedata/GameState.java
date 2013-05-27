@@ -12,7 +12,7 @@ import headrick.brandon.model.QuestNode;
  */
 public class GameState {
 	private static GameState instance = null;
-	LinkedList<QuestNode> questNodes  = new LinkedList<QuestNode>();
+	private static LinkedList<QuestNode> questNodes  = new LinkedList<QuestNode>();
 	
 	private GameState(){
 		//restrict instantiation
@@ -36,8 +36,8 @@ public class GameState {
 	 * @param script the text used to prompt the user when they arrive at a quest location
 	 * @param answer the required text response when a user is locked from proceeding from one quest to another
 	 */
-	public void addQuest(String title, LatLng point, String script, String answer){
-		questNodes.add(new QuestNode(title, point, script, answer));
+	public void addQuest(String title, LatLng point, String script, String answer, double radialThreshold){
+		questNodes.add(new QuestNode(title, point, script, answer, radialThreshold));
 	}
 	
 	public void addQuest(QuestNode newQuest) {

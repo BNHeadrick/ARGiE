@@ -20,4 +20,7 @@ public final class Constants {
 	//debug field for labeling quests on the map
 	public static final char INITIAL_LABEL_VAL = 'A';
 
+    //Default threshold for GPS coordinates
+    public static final double DEFAULT_RAD_METERS = 10.0;
+
 }
