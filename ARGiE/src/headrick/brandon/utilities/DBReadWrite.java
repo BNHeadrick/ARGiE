@@ -3,7 +3,7 @@ package headrick.brandon.utilities;
 import java.util.List;
 
 import headrick.brandon.gamedata.GameState;
-import headrick.brandon.model.QuestNode;
+import headrick.brandon.models.QuestNode;
 
 import android.content.Context;
 import android.util.Log;

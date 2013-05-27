@@ -18,7 +18,8 @@ public final class Constants {
 	public static final int LABEL_Y_OFFSET = 40;
 	
 	//debug field for labeling quests on the map
-	public static final char INITIAL_LABEL_VAL = 'A';
+	public static final char INITIAL_ALPHA_LABEL_VAL = 'A';
+    public static final int INITIAL_NUM_LABEL_VAL = 1;
 
     //Default threshold for GPS coordinates
     public static final double DEFAULT_RAD_METERS = 100.0;

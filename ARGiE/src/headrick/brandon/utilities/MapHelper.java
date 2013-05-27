@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.*;
 import headrick.brandon.gamedata.Constants;
-import headrick.brandon.model.QuestNode;
+import headrick.brandon.models.QuestNode;
 
 /**
  * Singleton class that does common map functions that are needed in multiple activities which use mapFragments

@@ -1,16 +1,9 @@
 package headrick.brandon.utilities;
 
-import java.util.List;
-
-import com.google.android.gms.maps.model.LatLng;
- 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
-import headrick.brandon.model.QuestNode;
- 
 public class DBTest extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {

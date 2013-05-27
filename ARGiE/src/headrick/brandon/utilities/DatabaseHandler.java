@@ -1,6 +1,6 @@
 package headrick.brandon.utilities;
 
-import headrick.brandon.model.QuestNode;
+import headrick.brandon.models.QuestNode;
 
 import java.util.ArrayList;
 import java.util.List;

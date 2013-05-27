@@ -4,13 +4,16 @@ import java.util.LinkedList;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import headrick.brandon.model.QuestNode;
+import headrick.brandon.models.QuestNode;
 
 /**
  * Singleton class that holds the state of the game and provides access to 
  * the quest information
  */
 public class GameState {
+    public static char questAlphaLabel = Constants.INITIAL_ALPHA_LABEL_VAL;   //temporarily just for debugging; remove later.
+    public static int questNumLabel = Constants.INITIAL_NUM_LABEL_VAL;        //temporarily just for debugging; remove later.
+
 	private static GameState instance = null;
 	private static LinkedList<QuestNode> questNodes  = new LinkedList<QuestNode>();
 	
