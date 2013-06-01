@@ -19,19 +19,19 @@
     <file path="$PROJECT_DIR$/ARGiE/gen/headrick/brandon/R.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370066341146" ignored="false" />
     <file path="$PROJECT_DIR$/ARGiE/gen/headrick/brandon/Manifest.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369352715081" ignored="false" />
     <file path="$PROJECT_DIR$/ARGiE/gen/headrick/brandon/BuildConfig.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369352748675" ignored="false" />
-    <file path="/TitleScreenActivity.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369604397896" ignored="false" />
-    <file path="/EditQuestActivity.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369492848831" ignored="false" />
+    <file path="/TitleScreenActivity.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370113904050" ignored="false" />
+    <file path="/EditQuestActivity.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370120825905" ignored="false" />
     <file path="/fragment.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370066391212" ignored="false" />
     <file path="/RunGameActivity.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370068471486" ignored="false" />
     <file path="/GMapHelper.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369607006969" ignored="false" />
-    <file path="/GameState.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369693962155" ignored="false" />
-    <file path="/CreateGameActivity.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370068454880" ignored="false" />
+    <file path="/GameState.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370114852063" ignored="false" />
+    <file path="/CreateGameActivity.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370121261911" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369610427091" ignored="false" />
     <file path="/Dummy.txt" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369609743558" ignored="false" />
-    <file path="/GameOptionsActivity.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369641733776" ignored="false" />
-    <file path="/game_options_screen.xml" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369637834335" ignored="false" />
+    <file path="/GameOptionsActivity.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370116179499" ignored="false" />
+    <file path="/game_options_screen.xml" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370115707287" ignored="false" />
     <file path="/strings.xml" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369695966546" ignored="false" />
-    <file path="/QuestNode.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369635297417" ignored="false" />
+    <file path="/QuestNode.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370120401383" ignored="false" />
     <file path="/DatabaseHandler.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369632793740" ignored="false" />
     <file path="/Constants.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369693757651" ignored="false" />
     <file path="/DBReadWrite.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369636235332" ignored="false" />
@@ -39,6 +39,7 @@
     <file path="/GameSettingsState.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369641088819" ignored="false" />
     <file path="$PROJECT_DIR$/ARGiE/bin/AndroidManifest.xml" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369688574702" ignored="false" />
     <file path="/QuestBatch.java" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1369692480758" ignored="false" />
+    <file path="/edit_quest_screen.xml" changelist="90e5c0e4-17bb-473a-887b-fecb1ead25f3" time="1370115907802" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,37 +105,110 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CreateGameActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/CreateGameActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="28" selection-start="3002" selection-end="3002" vertical-scroll-proportion="115.8">
-              <folding>
-                <element signature="e#5976#6324#0" expanded="true" />
-                <element signature="e#6305#6306#0" expanded="true" />
-                <element signature="e#6378#6608#0" expanded="true" />
-                <element signature="e#6589#6590#0" expanded="true" />
-                <element signature="e#7002#7460#0" expanded="true" />
-                <element signature="e#7441#7442#0" expanded="true" />
-                <element signature="e#7514#7744#0" expanded="true" />
-                <element signature="e#7725#7726#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RunGameActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RunGameActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/RunGameActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="31" selection-start="2549" selection-end="2549" vertical-scroll-proportion="0.43220338">
+            <state line="43" column="43" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ARGiE/AndroidManifest.xml">
+      <file leaf-file-name="CreateGameActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/CreateGameActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="156" selection-start="2860" selection-end="2860" vertical-scroll-proportion="0.0">
+            <state line="278" column="18" selection-start="9741" selection-end="9741" vertical-scroll-proportion="0.5652174">
+              <folding>
+                <element signature="e#6083#6431#0" expanded="true" />
+                <element signature="e#6412#6413#0" expanded="true" />
+                <element signature="e#6485#6715#0" expanded="true" />
+                <element signature="e#6696#6697#0" expanded="true" />
+                <element signature="e#7109#7567#0" expanded="true" />
+                <element signature="e#7548#7549#0" expanded="true" />
+                <element signature="e#7621#7851#0" expanded="true" />
+                <element signature="e#7832#7833#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapHelper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/utilities/MapHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="41" selection-start="1502" selection-end="1506" vertical-scroll-proportion="-14.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameOptionsActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/GameOptionsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="39" selection-start="2138" selection-end="2138" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game_options_screen.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ARGiE/res/layout/game_options_screen.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="34" selection-start="1009" selection-end="1009" vertical-scroll-proportion="-12.222222">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameSettingsState.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/GameSettingsState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="9" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditQuestActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/EditQuestActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="125" column="22" selection-start="4745" selection-end="4745" vertical-scroll-proportion="-5.4313726">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit_quest_screen.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ARGiE/res/layout/edit_quest_screen.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="103" column="47" selection-start="4137" selection-end="4137" vertical-scroll-proportion="-5.7115383">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameState.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/GameState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="80" column="5" selection-start="2427" selection-end="2427" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuestNode.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/models/QuestNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="105" column="42" selection-start="2214" selection-end="2214" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -150,22 +224,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/controller/TitleScreenActivity.java" />
-        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/utilities/DatabaseHandler.java" />
-        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/model/QuestNode.java" />
-        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/utilities/DBReadWrite.java" />
-        <option value="$PROJECT_DIR$/ARGiE/res/layout/game_options_screen.xml" />
-        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/GameSettingsState.java" />
         <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/controller/GameOptionsActivity.java" />
         <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/utilities/MapHelper.java" />
         <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/controller/RunGameActivity.java" />
         <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/controller/CreateGameActivity.java" />
         <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/models/QuestBatch.java" />
         <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/Constants.java" />
-        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/GameState.java" />
         <option value="$PROJECT_DIR$/ARGiE/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/CreateGameActivity.java" />
         <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/RunGameActivity.java" />
+        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/TitleScreenActivity.java" />
+        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/GameState.java" />
+        <option value="$PROJECT_DIR$/ARGiE/res/layout/game_options_screen.xml" />
+        <option value="$PROJECT_DIR$/ARGiE/res/layout/edit_quest_screen.xml" />
+        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/GameOptionsActivity.java" />
+        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/models/QuestNode.java" />
+        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/EditQuestActivity.java" />
+        <option value="$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/CreateGameActivity.java" />
       </list>
     </option>
   </component>
@@ -174,7 +248,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1227" />
+    <option name="width" value="1186" />
     <option name="height" value="1054" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -238,6 +312,54 @@
               <option name="myItemId" value="brandon" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utilities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brandon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brandon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gamedata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -258,6 +380,56 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="activities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARGiE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -411,6 +583,11 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -444,36 +621,36 @@
       <workItem from="1369528871787" duration="93000" />
       <workItem from="1369598091113" duration="6918000" />
       <workItem from="1369609697050" duration="38039000" />
-      <workItem from="1370066220149" duration="2852000" />
+      <workItem from="1370066220149" duration="13430000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57573000" />
+    <option name="totallyTimeSpent" value="68151000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1227" height="1054" extended-state="0" />
+    <frame x="0" y="22" width="1186" height="1054" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.106886655" sideWeight="0.7188329" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18390805" sideWeight="0.7188329" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32886904" sideWeight="0.7188329" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32441112" sideWeight="0.5004234" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28116712" sideWeight="0.5006337" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32762313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26445395" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.6710875" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943293" sideWeight="0.67558885" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22523285" sideWeight="0.67558885" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32441112" sideWeight="0.49957663" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21052632" sideWeight="0.73554605" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28116712" sideWeight="0.49936628" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22482435" sideWeight="0.6713062" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3416732" sideWeight="0.6713062" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901907" sideWeight="0.6702356" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -542,82 +719,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/GameSettingsState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="47" selection-start="652" selection-end="652" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-17/android.jar!/android/app/Activity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="432" column="0" selection-start="19421" selection-end="19421" vertical-scroll-proportion="0.84641635" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/utilities/MapHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="2115" selection-end="2115" vertical-scroll-proportion="-11.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-17/android.jar!/android/os/Handler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="0" selection-start="3379" selection-end="3379" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/models/BaseGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-17/android.jar!/java/util/LinkedList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="2886" selection-end="2886" vertical-scroll-proportion="1.0767918" />
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-17/android.jar!/java/lang/reflect/Method.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="2320" selection-end="2320" vertical-scroll-proportion="0.84641635" />
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-17/android.jar!/android/os/Looper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="968" selection-end="968" vertical-scroll-proportion="0.72621036" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/models/QuestNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="29" selection-start="434" selection-end="434" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/GameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="35" selection-start="441" selection-end="454" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ARGiE/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="844" selection-end="844" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="46" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ARGiE/res/layout/about_screen.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="34" selection-start="492" selection-end="492" vertical-scroll-proportion="-6.6666665">
@@ -628,33 +729,135 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ARGiE/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/ARGiE/res/layout/create_game_screen.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="156" selection-start="2860" selection-end="2860" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/CreateGameActivity.java">
+    <entry file="file://$PROJECT_DIR$/ARGiE/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="28" selection-start="3002" selection-end="3002" vertical-scroll-proportion="115.8">
-          <folding>
-            <element signature="e#5976#6324#0" expanded="true" />
-            <element signature="e#6305#6306#0" expanded="true" />
-            <element signature="e#6378#6608#0" expanded="true" />
-            <element signature="e#6589#6590#0" expanded="true" />
-            <element signature="e#7002#7460#0" expanded="true" />
-            <element signature="e#7441#7442#0" expanded="true" />
-            <element signature="e#7514#7744#0" expanded="true" />
-            <element signature="e#7725#7726#0" expanded="true" />
-          </folding>
+        <state line="65" column="156" selection-start="2860" selection-end="2860" vertical-scroll-proportion="1.9461077">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/RunGameActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="31" selection-start="2549" selection-end="2549" vertical-scroll-proportion="0.43220338">
+        <state line="43" column="43" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="39" selection-start="517" selection-end="517" vertical-scroll-proportion="0.247505">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/res/layout/title_screen.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="25" selection-start="830" selection-end="830" vertical-scroll-proportion="0.64681727">
+          <folding>
+            <element signature="e#830#864#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/TitleScreenActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="18" selection-start="1566" selection-end="1566" vertical-scroll-proportion="0.38715953">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/res/layout/game_options_screen.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="34" selection-start="1009" selection-end="1009" vertical-scroll-proportion="-12.222222">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/res/layout/edit_quest_screen.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="47" selection-start="4137" selection-end="4137" vertical-scroll-proportion="-5.7115383">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/models/QuestNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="42" selection-start="2214" selection-end="2214" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="5" selection-start="2427" selection-end="2427" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/utilities/MapHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="41" selection-start="1502" selection-end="1506" vertical-scroll-proportion="-14.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/GameOptionsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="39" selection-start="2138" selection-end="2138" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/gamedata/GameSettingsState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="9" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/EditQuestActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="22" selection-start="4745" selection-end="4745" vertical-scroll-proportion="-5.4313726">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARGiE/src/headrick/brandon/activities/CreateGameActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="278" column="18" selection-start="9741" selection-end="9741" vertical-scroll-proportion="0.5652174">
+          <folding>
+            <element signature="e#6083#6431#0" expanded="true" />
+            <element signature="e#6412#6413#0" expanded="true" />
+            <element signature="e#6485#6715#0" expanded="true" />
+            <element signature="e#6696#6697#0" expanded="true" />
+            <element signature="e#7109#7567#0" expanded="true" />
+            <element signature="e#7548#7549#0" expanded="true" />
+            <element signature="e#7621#7851#0" expanded="true" />
+            <element signature="e#7832#7833#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

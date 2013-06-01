@@ -34,10 +34,10 @@ public class GameOptionsActivity extends Activity implements View.OnClickListene
 
     private void initializeVars() {
         // TODO Auto-generated method stub
-        radThresh = (EditText) findViewById(R.id.etRadius);
+        radThresh = (EditText) findViewById(R.id.etGameRadius);
         radThresh.setText(Constants.DEFAULT_RAD_METERS + "");
-        saveChanges = (Button) findViewById(R.id.bSaveChanges);
-        cancelChanges = (Button) findViewById(R.id.bCancelChanges);
+        saveChanges = (Button) findViewById(R.id.bGameSaveChanges);
+        cancelChanges = (Button) findViewById(R.id.bGameCancelChanges);
 
         saveChanges.setOnClickListener(this);
         cancelChanges.setOnClickListener(this);
@@ -49,7 +49,7 @@ public class GameOptionsActivity extends Activity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.bSaveChanges:
+            case R.id.bGameSaveChanges:
                 if(radThresh.getText().length()>0){
 
                     double radThreshValue = Double.parseDouble(radThresh.getText().toString());
@@ -67,7 +67,7 @@ public class GameOptionsActivity extends Activity implements View.OnClickListene
                 }
 
                 break;
-            case R.id.bCancelChanges:
+            case R.id.bGameCancelChanges:
 
                 finish();
                 break;

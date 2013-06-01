@@ -9,24 +9,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Radius"
-            android:id="@+id/lRadius" android:layout_gravity="left|center_vertical"/>
+            android:id="@+id/lGameRadius" android:layout_gravity="left|center_vertical"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/etRadius" android:layout_gravity="left|center_vertical" android:editable="true"/>
+            android:id="@+id/etGameRadius" android:layout_gravity="left|center_vertical" android:editable="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/game_options_screen_save_button"
-            android:id="@+id/bSaveChanges" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:id="@+id/bGameSaveChanges" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
             />
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/game_options_screen_cancel_button"
-            android:id="@+id/bCancelChanges" android:layout_alignTop="@+id/bSaveChanges" android:layout_alignParentRight="true"/>
+            android:id="@+id/bGameCancelChanges" android:layout_alignTop="@+id/bGameSaveChanges" android:layout_alignParentRight="true"/>
 
 
 </RelativeLayout>

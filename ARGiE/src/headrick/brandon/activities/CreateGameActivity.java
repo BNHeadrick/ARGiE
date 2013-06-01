@@ -70,16 +70,21 @@ OnMarkerClickListener, LocationListener
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_game_screen);
-		initializeVars();
-		setupMapIfNeeded();
-		dbReadWrite = new DBReadWrite(this.getApplicationContext());
-		
 
-		mMap.setMyLocationEnabled(true);
-		Criteria criteria = new Criteria();
-	    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-	    String provider = locationManager.getBestProvider(criteria, false);
-	    location = locationManager.getLastKnownLocation(provider);
+        setupActivity();
+	}
+
+    private void setupActivity(){
+        initializeVars();
+        setupMapIfNeeded();
+        dbReadWrite = new DBReadWrite(this.getApplicationContext());
+
+        mMap.setMyLocationEnabled(true);
+        Criteria criteria = new Criteria();
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        String provider = locationManager.getBestProvider(criteria, false);
+        location = locationManager.getLastKnownLocation(provider);
+
         //hacky way of ensuring that the location is found by the device before trying to set the start location
         if (location != null){
             locationSet = true;
@@ -100,11 +105,8 @@ OnMarkerClickListener, LocationListener
                 }
             }
         }
+    }
 
-
-	    
-	}
-	
 	/**
 	 * Moves the map to the passed in location
 	 * @param point the LatLng object used to move the map to a specific location
@@ -124,12 +126,12 @@ OnMarkerClickListener, LocationListener
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
             if (mMap != null) {
-                setupMap();
+                setupListeners();
             }
         }
     }
 
-    private void setupMap() {
+    private void setupListeners() {
         mMap.setOnMapClickListener(this);
         mMap.setOnMapLongClickListener(this);
         mMap.setOnCameraChangeListener(this);
@@ -270,8 +272,11 @@ OnMarkerClickListener, LocationListener
 		//marker.remove();
 		for(QuestNode aQuest : gameState.getQuestNodes()){
 			if(aQuest.getMapMarker().equals(marker)){
+                gameState.setActiveQuest(aQuest);
 				Intent intent = new Intent(CreateGameActivity.this, EditQuestActivity.class);
 				startActivity(intent);
+
+                //setupActivity();
 			}
 		}
 	}

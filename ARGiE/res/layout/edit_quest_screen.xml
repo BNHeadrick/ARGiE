@@ -1,8 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    
 
-</LinearLayout>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Title"
+            android:id="@+id/tvQuestTitle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:singleLine="false"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:id="@+id/etQuestTitle"
+            android:layout_below="@+id/tvQuestTitle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Script"
+            android:id="@+id/tvQuestScript"
+            android:layout_below="@+id/etQuestTitle"
+            android:layout_alignParentLeft="true"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:id="@+id/etQuestScript"
+            android:layout_below="@+id/tvQuestScript"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"/>
+
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Require User Response (Answer)?"
+            android:id="@+id/cbQuestAnswer"
+            android:layout_below="@+id/etQuestScript"
+            android:layout_alignParentLeft="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Answer"
+            android:id="@+id/tvQuestAnswer"
+            android:layout_below="@+id/cbQuestAnswer"
+            android:layout_alignParentLeft="true"
+            android:visibility="gone"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:id="@+id/etQuestAnswer"
+            android:layout_below="@+id/tvQuestAnswer"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Radial Threshold"
+            android:id="@+id/tvQuestRadius"
+            android:layout_below="@+id/etQuestAnswer"
+            android:layout_alignParentLeft="true"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:id="@+id/etQuestRadius"
+            android:layout_below="@+id/tvQuestRadius"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/bQuestSaveChanges"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:id="@+id/bQuestCancelChanges"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"/>
+
+
+</RelativeLayout>

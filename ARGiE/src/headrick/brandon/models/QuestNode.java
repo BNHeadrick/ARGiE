@@ -10,6 +10,7 @@ import com.google.android.gms.maps.model.Marker;
  */
 public class QuestNode {
 	private String title = null, script = null, answer = null;
+    private boolean forceUserResponse = false;
 	private LatLng point;
 	private int id;	//only used for database
     private double radialThreshold;
@@ -100,5 +101,13 @@ public class QuestNode {
 
     public double getRadialThreshold() {
         return radialThreshold;
+    }
+
+    public boolean isForceUserResponse() {
+        return forceUserResponse;
+    }
+
+    public void setForceUserResponse(boolean forceUserResponse) {
+        this.forceUserResponse = forceUserResponse;
     }
 }

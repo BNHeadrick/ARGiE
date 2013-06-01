@@ -15,6 +15,10 @@ public class GameState {
     public static int questNumLabel = Constants.INITIAL_NUM_LABEL_VAL;        //temporarily just for debugging; remove later.
 
 	private static GameState instance = null;
+    //the active quest is whatever is the most relevant quest at any point in time; this might
+    //be the current quest the user is trying to solve while playing or the current quest that is
+    //being edited.
+    private static QuestNode activeQuest;
 	private static LinkedList<QuestNode> questNodes  = new LinkedList<QuestNode>();
 	
 	private GameState(){
@@ -67,5 +71,13 @@ public class GameState {
 	public void removeAllQuests(){
 		questNodes.clear();
 	}
+
+    public void setActiveQuest(QuestNode questNode){
+        activeQuest = questNode;
+    }
+
+    public QuestNode getActiveQuest(){
+        return activeQuest;
+    }
 	
 }
