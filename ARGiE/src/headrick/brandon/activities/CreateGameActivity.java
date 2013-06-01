@@ -12,6 +12,8 @@ import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.model.*;
 
 import headrick.brandon.R;
+
+import android.location.LocationListener;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -44,7 +46,7 @@ import headrick.brandon.utilities.MapHelper;
 public class CreateGameActivity extends FragmentActivity 
 implements OnMapClickListener, OnMapLongClickListener, 
 OnCameraChangeListener, OnInfoWindowClickListener, View.OnClickListener,
-OnMarkerClickListener
+OnMarkerClickListener, LocationListener
 {
 
 	private GoogleMap mMap;
@@ -56,7 +58,12 @@ OnMarkerClickListener
     GameState gameState;
     GameSettingsState settingsState;
     MapHelper mapHelper;
+    Location location;
+
 	//private ArrayList<LatLng> tempArrList = new ArrayList<LatLng>();
+
+    //hacky flag for forcing only one recreation of the current quests
+    boolean locationSet = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,23 +79,29 @@ OnMarkerClickListener
 		Criteria criteria = new Criteria();
 	    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 	    String provider = locationManager.getBestProvider(criteria, false);
-	    Location location = locationManager.getLastKnownLocation(provider);
-	    LatLng userLoc = new LatLng(location.getLatitude(), location.getLongitude());
-	    
-	    setupStartLocation(userLoc);
-	    
-	    //rebuild the map for configuration changes
-	    if(!GameState.getInstance().isEmpty()){
-	    	QuestNode prevQuest = null;
-	    	for(QuestNode aQuest : gameState.getQuestNodes()){
-                MapHelper.getInstance().placeMapMarker(mMap, aQuest, gameState.questAlphaLabel);
-	    		if(aQuest != GameState.getInstance().getRoot()){
-	    			drawQuestPath(prevQuest, aQuest);
-	    		}
-	    		gameState.questAlphaLabel++;
-	    		prevQuest = aQuest;
-	    	}
-	    }
+	    location = locationManager.getLastKnownLocation(provider);
+        //hacky way of ensuring that the location is found by the device before trying to set the start location
+        if (location != null){
+            locationSet = true;
+            LatLng userLoc = new LatLng(location.getLatitude(), location.getLongitude());
+
+            setupStartLocation(userLoc);
+
+            //rebuild the map for configuration changes
+            if(!GameState.getInstance().isEmpty()){
+                QuestNode prevQuest = null;
+                for(QuestNode aQuest : gameState.getQuestNodes()){
+                    MapHelper.getInstance().placeMapMarker(mMap, aQuest, gameState.questAlphaLabel);
+                    if(aQuest != GameState.getInstance().getRoot()){
+                        drawQuestPath(prevQuest, aQuest);
+                    }
+                    gameState.questAlphaLabel++;
+                    prevQuest = aQuest;
+                }
+            }
+        }
+
+
 	    
 	}
 	
@@ -277,4 +290,40 @@ OnMarkerClickListener
 	}
 
 
+    @Override
+    public void onLocationChanged(Location location) {
+        if(!locationSet){
+            LatLng userLoc = new LatLng(location.getLatitude(), location.getLongitude());
+            setupStartLocation(userLoc);
+
+            //rebuild the map for configuration changes
+            if(!GameState.getInstance().isEmpty()){
+                QuestNode prevQuest = null;
+                for(QuestNode aQuest : gameState.getQuestNodes()){
+                    MapHelper.getInstance().placeMapMarker(mMap, aQuest, gameState.questAlphaLabel);
+                    if(aQuest != GameState.getInstance().getRoot()){
+                        drawQuestPath(prevQuest, aQuest);
+                    }
+                    gameState.questAlphaLabel++;
+                    prevQuest = aQuest;
+                }
+            }
+            locationSet = true;
+        }
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
 }

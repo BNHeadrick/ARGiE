@@ -35,6 +35,9 @@ public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMap
     GameState gameState;
     GameSettingsState settingsState;
     MapHelper mapHelper;
+    Location location;
+    //hacky flag for forcing only one recreation of the current quests
+    boolean locationSet = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -48,24 +51,28 @@ public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMap
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         String provider = locationManager.getBestProvider(criteria, false);
-        Location location = locationManager.getLastKnownLocation(provider);
-        LatLng userLoc = new LatLng(location.getLatitude(), location.getLongitude());
+        location = locationManager.getLastKnownLocation(provider);
 
-        setupStartLocation(userLoc);
+        //hacky way of ensuring that the location is found by the device before trying to set the start location
+        if (location != null){
+            locationSet = true;
+            LatLng userLoc = new LatLng(location.getLatitude(), location.getLongitude());
 
-        //rebuild the map for configuration changes
-        if(!gameState.isEmpty()){
-            QuestNode prevQuest = null;
-            for(QuestNode aQuest : gameState.getQuestNodes()){
-                mapHelper.placeMapMarker(mMap, aQuest, gameState.questAlphaLabel);
-                if(aQuest != gameState.getRoot()){
-                    drawQuestPath(prevQuest, aQuest);
+            setupStartLocation(userLoc);
+
+            //rebuild the map for configuration changes
+            if(!GameState.getInstance().isEmpty()){
+                QuestNode prevQuest = null;
+                for(QuestNode aQuest : gameState.getQuestNodes()){
+                    MapHelper.getInstance().placeMapMarker(mMap, aQuest, gameState.questAlphaLabel);
+                    if(aQuest != GameState.getInstance().getRoot()){
+                        drawQuestPath(prevQuest, aQuest);
+                    }
+                    gameState.questAlphaLabel++;
+                    prevQuest = aQuest;
                 }
-                gameState.questAlphaLabel++;
-                prevQuest = aQuest;
             }
         }
-
     }
 
     /**
@@ -198,6 +205,25 @@ public class RunGameActivity extends FragmentActivity implements GoogleMap.OnMap
         if (onLocationChangedListener != null) {
             onLocationChangedListener.onLocationChanged(location);
             isAtNextValidLocation();
+        }
+
+        if(!locationSet){
+            LatLng userLoc = new LatLng(location.getLatitude(), location.getLongitude());
+            setupStartLocation(userLoc);
+
+            //rebuild the map for configuration changes
+            if(!GameState.getInstance().isEmpty()){
+                QuestNode prevQuest = null;
+                for(QuestNode aQuest : gameState.getQuestNodes()){
+                    MapHelper.getInstance().placeMapMarker(mMap, aQuest, gameState.questAlphaLabel);
+                    if(aQuest != GameState.getInstance().getRoot()){
+                        drawQuestPath(prevQuest, aQuest);
+                    }
+                    gameState.questAlphaLabel++;
+                    prevQuest = aQuest;
+                }
+            }
+            locationSet = true;
         }
     }
 
